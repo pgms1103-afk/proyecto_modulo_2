@@ -1,0 +1,86 @@
+.barra-navegacion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #161b22;
+  border-bottom: 1px solid #2a3545;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+}
+
+/* Marca / Logo */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icono-marca {
+  font-size: 22px;
+}
+
+.nombre-marca {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e6edf3;
+  font-family: "Arial Black";
+}
+
+.subtitulo-marca {
+  display: block;
+  font-size: 10px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Enlaces */
+.enlaces-nav {
+  display: flex;
+  gap: 5px;
+}
+
+.enlace-nav {
+  padding: 7px 16px;
+  border-radius: 10px;
+  color: #8b949e;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+
+.enlace-nav:hover {
+  background-color: #21293a;
+  color: #e6edf3;
+}
+
+.enlace-nav.activo {
+  background-color: rgba(79, 156, 249, 0.15);
+  color: #4f9cf9;
+}
+
+/* Estado */
+.estado-sistema {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.punto-verde {
+  width: 8px;
+  height: 8px;
+  background-color: #3fb950;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.texto-estado {
+  font-size: 12px;
+  color: #8b949e;
+}

@@ -1,0 +1,239 @@
+/* ===== PÁGINA COMPLETA ===== */
+.pagina-dashboard {
+  padding: 32px 36px;
+  background-color: #0d1117;
+  min-height: 100vh;
+}
+
+/* ===== ENCABEZADO ===== */
+.encabezado {
+  margin-bottom: 28px;
+}
+
+.titulo-pagina {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0 0 4px 0;
+}
+
+.subtitulo-pagina {
+  font-size: 13px;
+  color: #8b949e;
+  margin: 0;
+}
+
+/* ===== FILA DE TARJETAS ===== */
+.fila-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* Tarjeta base */
+.tarjeta {
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: transform 0.2s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-3px);
+}
+
+.icono-tarjeta {
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.contenido-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.numero-tarjeta {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e6edf3;
+  line-height: 1;
+}
+
+.titulo-tarjeta {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e6edf3;
+}
+
+.sub-tarjeta {
+  font-size: 11px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Colores de borde por tarjeta */
+.tarjeta-azul    { border-top: 3px solid #4f9cf9; }
+.tarjeta-verde   { border-top: 3px solid #3fb950; }
+.tarjeta-amarilla{ border-top: 3px solid #d29922; }
+.tarjeta-roja    { border-top: 3px solid #f85149; }
+.tarjeta-morada  { border-top: 3px solid #bc8cff; }
+.tarjeta-naranja { border-top: 3px solid #f0883e; }
+
+/* ===== FILA DE PANELES ===== */
+.fila-paneles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* Panel base */
+.panel {
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cabecera-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #2a3545;
+}
+
+.titulo-panel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+}
+
+.cuerpo-panel {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== BARRAS ===== */
+.fila-barra {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.meta-barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nombre-barra {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e6edf3;
+}
+
+.cantidad-barra {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pista-barra {
+  height: 5px;
+  background-color: #21293a;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.relleno-barra {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.porcentaje-barra {
+  font-size: 10px;
+  color: #8b949e;
+  text-align: right;
+}
+
+/* Colores de texto */
+.color-azul    { color: #4f9cf9; }
+.color-verde   { color: #3fb950; }
+.color-amarillo{ color: #d29922; }
+.color-rojo    { color: #f85149; }
+.color-morado  { color: #bc8cff; }
+.color-naranja { color: #f0883e; }
+
+/* ===== PANEL ESTADO ENTREGAS ===== */
+.estado-cuerpo {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 24px;
+}
+
+.circulo-estado {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 10px solid #3fb950;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.numero-circulo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e6edf3;
+  line-height: 1;
+}
+
+.label-circulo {
+  font-size: 9px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leyenda-estado {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.item-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.punto-leyenda {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.nombre-leyenda {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e6edf3;
+  margin-bottom: 2px;
+}
+
+.valor-leyenda {
+  font-size: 12px;
+  font-weight: 700;
+}
