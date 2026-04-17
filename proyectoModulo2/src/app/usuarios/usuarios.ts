@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './usuarios.html',
   styleUrl: './usuarios.css',
 })
-export class Usuarios {}
+export class Usuarios {
+  mostrarCreador = false;
+
+  abrirCreador() { this.mostrarCreador = true; }
+  cerrarCreador() { this.mostrarCreador = false; }
+}

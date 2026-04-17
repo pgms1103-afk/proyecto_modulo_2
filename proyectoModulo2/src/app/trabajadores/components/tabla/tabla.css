@@ -15,7 +15,8 @@
 
 /* Encabezados */
 .tabla-trabajadores thead {
-  background-color: #0d1117;
+  background-color: #1c2330;
+  border-bottom: 1px solid #2a3545;
 }
 
 .tabla-trabajadores th {
