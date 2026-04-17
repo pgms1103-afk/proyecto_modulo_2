@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './trabajadores.html',
   styleUrl: './trabajadores.css',
 })
-export class Trabajadores {}
+export class Trabajadores {
+  mostrarCreador = false;
+
+  abrirCreador() { this.mostrarCreador = true; }
+  cerrarCreador() { this.mostrarCreador = false; }
+}

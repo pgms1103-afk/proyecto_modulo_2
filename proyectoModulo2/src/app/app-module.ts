@@ -6,10 +6,11 @@ import { App } from './app';
 import { Navbar } from './Inicio/navbar/navbar';
 import { Dashboard } from './Inicio/dashboard/dashboard';
 import { Usuarios } from './usuarios/usuarios';
+import { TrabajadoresModule } from './trabajadores/trabajadores.module';
 
 @NgModule({
   declarations: [App, Navbar, Dashboard, Usuarios],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, TrabajadoresModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

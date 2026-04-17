@@ -1,8 +1,18 @@
-<div class="neon-lines"></div>
-<div class="neon-lines-vertical"></div>
-<div class="trabajadores-page">
+<div class="pagina-trabajadores">
+  <div class="encabezado">
+    <h1 class="titulo-pagina">Gestión de Trabajadores</h1>
+    <p class="subtitulo-pagina">Administra el personal operativo y administrativo</p>
+  </div>
+
   <app-estadisticas></app-estadisticas>
-  <app-buscador></app-buscador>
+
+  <app-buscador (clicNuevo)="abrirCreador()"></app-buscador>
+
   <app-tabla></app-tabla>
-  <app-modal></app-modal>
+
+  <app-creador
+    [esVisible]="mostrarCreador"
+    (alCerrar)="cerrarCreador()">
+  </app-creador>
 </div>
+

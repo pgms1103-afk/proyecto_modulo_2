@@ -1,24 +1,79 @@
-/* ── Tabla ── */
-.table-container {
-  background: white;
-  border: 0.5px solid #e5e7eb;
+.contenedor-tabla-principal {
+  background-color: #161b22;
+  border: 1px solid #30363d;
   border-radius: 8px;
   overflow: hidden;
+  margin-top: 20px;
 }
-.table {
+
+.tabla-trabajadores {
   width: 100%;
   border-collapse: collapse;
-}
-.table thead {
-  background: #f9fafb;
-}
-.table th {
-  padding: 0.75rem 1.5rem;
   text-align: left;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 0.5px solid #e5e7eb;
+  font-size: 14px;
+}
+
+/* Encabezados */
+.tabla-trabajadores thead {
+  background-color: #0d1117;
+}
+
+.tabla-trabajadores th {
+  padding: 16px;
+  color: #8b949e;
+  font-weight: 600;
+  border-bottom: 1px solid #30363d;
+}
+
+/* Filas */
+.fila-trabajador td {
+  padding: 14px 16px;
+  color: #c9d1d9;
+  border-bottom: 1px solid #21262d;
+}
+
+.fila-trabajador:hover {
+  background-color: #1f242c;
+}
+
+.nombre {
+  font-weight: 600;
+  color: #e6edf3 !important;
+}
+
+/* Insignias (Badges) */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-morado { background: rgba(188, 140, 255, 0.1); color: #bc8cff; border: 1px solid rgba(188, 140, 255, 0.3); }
+.badge-verde  { background: rgba(63, 185, 80, 0.1); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.3); }
+
+/* Botones de acción */
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-accion {
+  background: none;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-accion:hover {
+  background-color: #30363d;
+  color: #58a6ff;
+}
+
+.btn-accion.eliminar:hover {
+  color: #f85149;
+  border-color: rgba(248, 81, 73, 0.4);
 }

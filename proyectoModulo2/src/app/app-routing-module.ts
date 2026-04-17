@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Dashboard } from './Inicio/dashboard/dashboard'; // Importación añadida
+import { Dashboard } from './Inicio/dashboard/dashboard';
+import { Trabajadores } from './trabajadores/trabajadores';
 
 const routes: Routes = [
-  { path: '', component: Dashboard }, // Ruta principal que carga el Dashboard
+  { path: '', component: Dashboard },
+  { path: 'trabajadores', component: Trabajadores }// Ruta principal que carga el Dashboard
 ];
 
 @NgModule({

@@ -1,55 +1,81 @@
-/* ── Buscador ── */
-.search-container {
-  background: white;
-  border: 0.5px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 1rem;
+.search-section {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  gap: 20px;
+  margin-bottom: 24px;
+  background: #161b22;
+  padding: 16px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
 }
+
+/* Contenedor del Input */
+.search-wrapper {
+  position: relative;
+  flex: 1; /* Toma todo el espacio disponible */
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b949e;
+  font-size: 14px;
+}
+
 .search-input {
-  flex: 1;
-  background: #f9fafb;
-  border: 0.5px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 0.625rem 1rem;
-  font-size: 0.875rem;
-  outline: none;
-  transition: border-color 0.2s;
+  width: 100%;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 10px 12px 10px 38px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
 }
+
 .search-input:focus {
-  border-color: #2563eb;
-}
-.search-input::placeholder {
-  color: #9ca3af;
-}
-.filter-select {
-  background: #f9fafb;
-  border: 0.5px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 0.625rem 1rem;
-  font-size: 0.875rem;
   outline: none;
-  cursor: pointer;
-  min-width: 12rem;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
 }
-.filter-select:focus {
-  border-color: #2563eb;
+
+/* Grupo de Filtros y Botón */
+.filters-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
-.search-button {
-  background: #2563eb;
-  border: none;
-  border-radius: 8px;
-  padding: 0.625rem;
-  color: white;
+
+.filter-select {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
+  min-width: 160px;
+}
+
+/* Botón Añadir (Verde como el de GitHub) */
+.add-button {
+  background-color: #238636;
+  color: #ffffff;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
   transition: background 0.2s;
 }
-.search-button:hover {
-  background: #1d4ed8;
+
+.add-button:hover {
+  background-color: #2ea043;
 }

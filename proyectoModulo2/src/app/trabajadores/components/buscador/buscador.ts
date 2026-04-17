@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-buscador',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class Buscador {
 
+  @Output() clicNuevo = new EventEmitter<void>();
+
+  notificarNuevo() {
+    this.clicNuevo.emit();
+  }
 }

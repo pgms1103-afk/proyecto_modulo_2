@@ -1,10 +1,8 @@
 /* ── Página principal ── */
-.trabajadores-page {
-  position: relative;
+.pagina-trabajadores {
+  padding: 32px 36px;
+  background-color: #0d1117; /* Igual al dashboard */
   min-height: 100vh;
-  background: #000000;
-  padding: 2rem;
-  z-index: 1;
 }
 
 /* ── Líneas neón horizontales ── */
