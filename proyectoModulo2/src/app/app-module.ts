@@ -3,17 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { Trabajadores } from './trabajadores/trabajadores';
-import { Estadisticas } from './trabajadores/components/estadisticas/estadisticas';
-import { Buscador } from './trabajadores/components/buscador/buscador';
-import { Tabla } from './trabajadores/components/tabla/tabla';
-import { Fila } from './trabajadores/components/fila/fila';
-import { Insignia } from './trabajadores/components/insignia/insignia';
-import { Modal } from './trabajadores/components/modal/modal';
+import { Navbar } from './Inicio/navbar/navbar';
+import { Dashboard } from './Inicio/dashboard/dashboard';
+import { TrabajadoresModule } from './trabajadores/trabajadores.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @NgModule({
-  declarations: [App, Trabajadores, Estadisticas, Buscador, Tabla, Fila, Insignia, Modal],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [App, Navbar, Dashboard],
+  imports: [BrowserModule, AppRoutingModule, TrabajadoresModule, UsuariosModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

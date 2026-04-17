@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-trabajadores',
+  selector: 'app-usuarios',
   standalone: false,
-  templateUrl: './trabajadores.html',
-  styleUrl: './trabajadores.css',
+  templateUrl: './usuarios.html',
+  styleUrl: './usuarios.css',
 })
-export class Trabajadores {
+export class Usuarios {
   mostrarCreador = false;
 
   abrirCreador() { this.mostrarCreador = true; }

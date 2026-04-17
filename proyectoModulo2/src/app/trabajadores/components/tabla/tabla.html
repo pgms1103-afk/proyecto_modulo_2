@@ -1,9 +1,9 @@
-<div class="table-container">
-  <table class="table">
+<div class="contenedor-tabla-principal">
+  <table class="tabla-trabajadores">
     <thead>
     <tr>
       <th>ID</th>
-      <th>Nombre</th>
+      <th>Nombre Completo</th>
       <th>Cédula</th>
       <th>Teléfono</th>
       <th>Correo</th>
@@ -12,9 +12,43 @@
     </tr>
     </thead>
     <tbody>
-    <app-fila></app-fila>
-    <app-fila></app-fila>
-    <app-fila></app-fila>
+    <tr class="fila-trabajador">
+      <td>1</td>
+      <td class="nombre">Ana Torres</td>
+      <td>10234567</td>
+      <td>3001234567</td>
+      <td>a.torres</td>
+      <td>
+        <span class="badge badge-morado">Administrativo</span>
+      </td>
+      <td>
+        <div class="acciones">
+          <button class="btn-accion editar" title="Editar">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button class="btn-accion eliminar" title="Eliminar">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="fila-trabajador">
+      <td>2</td>
+      <td class="nombre">Juan Pérez</td>
+      <td>11456789</td>
+      <td>3119876543</td>
+      <td>j.perez</td>
+      <td>
+        <span class="badge badge-verde">Conductor</span>
+      </td>
+      <td>
+        <div class="acciones">
+          <button class="btn-accion editar"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn-accion eliminar"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>

@@ -1,12 +1,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-buscador',
+  selector: 'app-buscador-usuarios',
   standalone: false,
-  templateUrl: './buscador.html',
-  styleUrl: './buscador.css',
+  templateUrl: './buscador-usuarios.html',
+  styleUrl: './buscador-usuarios.css',
 })
-export class Buscador {
+export class BuscadorUsuarios {
 
   @Output() clicNuevo = new EventEmitter<void>();
 
