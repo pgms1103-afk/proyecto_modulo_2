@@ -1,0 +1,196 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-card {
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Cabecera del modal */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #2a3545;
+}
+
+.modal-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+}
+
+.btn-cerrar-icon {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid #2a3545;
+  border-radius: 6px;
+  color: #8b949e;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.15s;
+}
+
+.btn-cerrar-icon:hover {
+  background-color: rgba(248, 81, 73, 0.15);
+  border-color: rgba(248, 81, 73, 0.5);
+  color: #f85149;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label,
+.modal-body > label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input {
+  padding: 9px 12px;
+  background-color: #1c2330;
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  color: #e6edf3;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus {
+  border-color: #4f9cf9;
+}
+
+.form-input::placeholder {
+  color: #484f58;
+}
+
+/* Selección de tipo de usuario */
+.role-selection-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.role-option {
+  cursor: pointer;
+}
+
+.role-option input[type="radio"] {
+  display: none;
+}
+
+.role-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background-color: #1c2330;
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  color: #8b949e;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.role-content small {
+  font-size: 10px;
+  font-weight: 400;
+  color: #484f58;
+}
+
+.role-content i {
+  font-size: 16px;
+}
+
+.role-option input[type="radio"]:checked + .role-content {
+  background-color: rgba(79, 156, 249, 0.15);
+  border-color: rgba(79, 156, 249, 0.5);
+  color: #4f9cf9;
+}
+
+.role-content:hover {
+  border-color: #3a4a5c;
+  color: #e6edf3;
+}
+
+/* Pie del modal */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 22px;
+  border-top: 1px solid #2a3545;
+}
+
+.btn-secundario {
+  padding: 8px 18px;
+  background-color: transparent;
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  color: #8b949e;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-secundario:hover {
+  border-color: #3a4a5c;
+  color: #e6edf3;
+}
+
+.btn-primario {
+  padding: 8px 20px;
+  background-color: #4f9cf9;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primario:hover {
+  background-color: #6baff9;
+}

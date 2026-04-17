@@ -1,0 +1,23 @@
+
+.pagina-trabajadores {
+  padding: 32px;
+  background-color: #0d1117;
+  min-height: 100vh;
+}
+
+.encabezado {
+  margin-bottom: 30px;
+}
+
+.titulo-pagina {
+  color: #e6edf3;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.subtitulo-pagina {
+  color: #8b949e;
+  font-size: 14px;
+  margin-top: 4px;
+}
