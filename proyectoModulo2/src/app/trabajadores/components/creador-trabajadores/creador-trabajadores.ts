@@ -2,10 +2,10 @@ import {Component, Input, Output, EventEmitter, OnInit, inject} from '@angular/c
 import {TrabajadorService} from '../../../services/trabajador.service';
 
 @Component({
-  selector: 'app-creador',
+  selector: 'app-creador-trabajadores',
   standalone: false,
-  templateUrl: './creador.html',
-  styleUrl: './creador.css',
+  templateUrl: './creador-trabajadores.html',
+  styleUrl: './creador-trabajadores.css',
 })
 export class Creador implements OnInit {
 

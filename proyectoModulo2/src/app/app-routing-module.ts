@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { Dashboard } from './Inicio/dashboard/dashboard';
 import { Trabajadores } from './trabajadores/trabajadores';
 import { Usuarios } from './usuarios/usuarios';
+import { Envios } from './envios/envios';
 
 const routes: Routes = [
   { path: '', component: Dashboard },
   { path: 'trabajadores', component: Trabajadores },
-  { path: 'usuarios', component: Usuarios }
+  { path: 'usuarios', component: Usuarios },
+  { path: 'envios', component: Envios }
 ];
 
 @NgModule({

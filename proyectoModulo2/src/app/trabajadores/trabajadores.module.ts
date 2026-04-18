@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { Trabajadores } from './trabajadores';
 
-import { Buscador } from './components/buscador/buscador';
-import { Estadisticas } from './components/estadisticas/estadisticas';
-import { Creador } from './components/creador/creador';
-import { Tabla } from './components/tabla/tabla';
-import {FormsModule} from '@angular/forms';
+import { Buscador } from './components/buscador-trabajadores/buscador-trabajadores';
+import { EstadisticasTrabajadores } from './components/estadisticas-trabajadores/estadisticas-trabajadores';
+import { Creador } from './components/creador-trabajadores/creador-trabajadores';
+import { TablaTrabajadores } from './components/tabla-trabajadores/tabla-trabajadores';
 
 @NgModule({
-  declarations: [Trabajadores, Buscador, Estadisticas, Creador, Tabla],
-  imports: [CommonModule, FormsModule],
+  declarations: [Trabajadores, Buscador, EstadisticasTrabajadores, Creador, TablaTrabajadores],
+  imports: [CommonModule],
   exports: [Trabajadores],
 })
 export class TrabajadoresModule {}
