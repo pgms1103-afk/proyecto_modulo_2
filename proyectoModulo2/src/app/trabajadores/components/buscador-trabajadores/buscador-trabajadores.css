@@ -60,22 +60,51 @@
   min-width: 160px;
 }
 
-/* Botón Añadir (Verde como el de GitHub) */
 .add-button {
+  padding: 8px 18px;
   background-color: #238636;
+  border: none;
+  border-radius: 8px;
   color: #ffffff;
-  border: 1px solid rgba(240, 246, 252, 0.1);
-  padding: 9px 16px;
-  border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.15s;
+  white-space: nowrap;
 }
 
 .add-button:hover {
   background-color: #2ea043;
+}
+
+.btn-refresh {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-refresh:hover {
+  background-color: #30363d;
+  color: #58a6ff;
+  border-color: #8b949e;
+}
+
+
+.btn-refresh:active i {
+  transform: rotate(180deg);
+  transition: 0.2s;
+}
+
+
+.filters-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

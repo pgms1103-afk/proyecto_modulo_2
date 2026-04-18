@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Creador } from './creador';
+import { TablaEnvios } from './tabla-envios';
 
-describe('Creador', () => {
-  let component: Creador;
-  let fixture: ComponentFixture<Creador>;
+describe('TablaEnvios', () => {
+  let component: TablaEnvios;
+  let fixture: ComponentFixture<TablaEnvios>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Creador],
+      declarations: [TablaEnvios],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Creador);
+    fixture = TestBed.createComponent(TablaEnvios);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

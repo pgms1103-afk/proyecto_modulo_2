@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-creador',
+  selector: 'app-creador-trabajadores',
   standalone: false,
-  templateUrl: './creador.html',
-  styleUrl: './creador.css',
+  templateUrl: './creador-trabajadores.html',
+  styleUrl: './creador-trabajadores.css',
 })
 export class Creador {
 

@@ -1,0 +1,77 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #8b949e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e6edf3;
+}
+
+
+.stat-card.total {
+  border-top: 3px solid #e6edf3;
+}
+
+.stat-card.alimenticio {
+  border-top: 3px solid #3fb950;
+}
+
+.stat-card.no-alimenticio {
+  border-top: 3px solid #4f9cf9;
+}
+
+.stat-card.carta {
+  border-top: 3px solid #d29922;
+}
+
+.stat-card.a-tiempo {
+  border-top: 3px solid #3fb950;
+}
+
+.stat-card.con-retraso {
+  border-top: 3px solid #f0883e;
+}
+
+
+.stat-value.verde {
+  color: #3fb950;
+}
+
+.stat-value.azul {
+  color: #4f9cf9;
+}
+
+.stat-value.amarillo {
+  color: #d29922;
+}
+
+.stat-value.naranja {
+  color: #f0883e;
+}

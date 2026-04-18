@@ -4,15 +4,15 @@
     <p class="subtitulo-pagina">Administra el personal operativo y administrativo</p>
   </div>
 
-  <app-estadisticas></app-estadisticas>
+  <app-estadisticas-trabajadores></app-estadisticas-trabajadores>
 
-  <app-buscador (clicNuevo)="abrirCreador()"></app-buscador>
+  <app-buscador-trabajadores (clicNuevo)="abrirCreador()"></app-buscador-trabajadores>
 
-  <app-tabla></app-tabla>
+  <app-tabla-trabajadores></app-tabla-trabajadores>
 
-  <app-creador
+  <app-creador-trabajadores
     [esVisible]="mostrarCreador"
     (alCerrar)="cerrarCreador()">
-  </app-creador>
+  </app-creador-trabajadores>
 </div>
 
