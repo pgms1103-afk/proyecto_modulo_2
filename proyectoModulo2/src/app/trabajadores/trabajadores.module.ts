@@ -7,10 +7,11 @@ import { Buscador } from './components/buscador-trabajadores/buscador-trabajador
 import { EstadisticasTrabajadores } from './components/estadisticas-trabajadores/estadisticas-trabajadores';
 import { Creador } from './components/creador-trabajadores/creador-trabajadores';
 import { TablaTrabajadores } from './components/tabla-trabajadores/tabla-trabajadores';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [Trabajadores, Buscador, EstadisticasTrabajadores, Creador, TablaTrabajadores],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [Trabajadores],
 })
 export class TrabajadoresModule {}

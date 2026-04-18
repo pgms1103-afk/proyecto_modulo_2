@@ -1,4 +1,4 @@
-export interface TrabajorModel {
+export interface TrabajadorModel {
 
   id: number;
   nombre: string;

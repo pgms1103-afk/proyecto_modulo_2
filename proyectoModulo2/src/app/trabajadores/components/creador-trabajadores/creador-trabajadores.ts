@@ -23,11 +23,13 @@ export class Creador implements OnInit {
   }
 
   crearTrabajador() {
-    this.trabajadorService.postCrearTrabajadores(this.nombre,
-      this.cedula,
-      this.telefono,
-      this.email,
-      this.cargo).subscribe({});
+    console.log('Enviando:', this.nombre, this.cedula, this.telefono, this.email, this.cargo);
+    this.trabajadorService.postCrearTrabajadores(
+      this.nombre, this.cedula, this.telefono, this.email, this.cargo
+    ).subscribe({
+      next: (res) => console.log('Creado:', res),
+      error: (e) => console.error('Error del backend:', e.error) // ← e.error tiene el mensaje
+    });
   }
 
   cerrar() {
