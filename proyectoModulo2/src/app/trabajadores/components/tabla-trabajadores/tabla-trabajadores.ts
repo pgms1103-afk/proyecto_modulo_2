@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {TrabajadorService} from '../../../services/trabajador.service';
 import {ToastrService} from 'ngx-toastr';
 import {TrabajadorModel} from '../../../models/trabajor.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-tabla-trabajadores',
@@ -9,23 +10,38 @@ import {TrabajadorModel} from '../../../models/trabajor.model';
   templateUrl: './tabla-trabajadores.html',
   styleUrl: './tabla-trabajadores.css',
 })
-export class TablaTrabajadores implements OnInit{
-
+export class TablaTrabajadores implements OnInit {
+  cargoSeleccionado: string = '';
+  private subFiltro: Subscription = new Subscription();
   trabajadorService = inject(TrabajadorService);
   toastr = inject(ToastrService);
   trabajadores: TrabajadorModel[] = [];
   statuscode: number = 0;
   private sub: any;
+  public id: number = 0;
+  private subLista: Subscription = new Subscription();
 
   ngOnInit(): void {
     this.loadOperaciones();
+
     this.sub = this.trabajadorService.refrescarTabla$.subscribe(() => {
       this.loadOperaciones();
+    });
+
+    this.subFiltro = this.trabajadorService.cargoFiltro$.subscribe(cargo => {
+      console.log('cargo recibido:', cargo); // ← agrega esto
+      this.cargoSeleccionado = cargo;
+    });
+
+    this.subLista = this.trabajadorService.listaTrabajadores$.subscribe(lista => {
+      this.trabajadores = lista;
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.subFiltro.unsubscribe();
+    this.subLista.unsubscribe();
   }
 
   loadOperaciones(): void {
@@ -54,4 +70,17 @@ export class TablaTrabajadores implements OnInit{
       },
     });
   }
+
+  deleteTrabajador(id:number) {
+    this.trabajadorService.deleteTrabajadores(id).subscribe({});
+  }
+
+  get trabajadoresFiltrados(): TrabajadorModel[] {
+    console.log('filtrando por:', this.cargoSeleccionado); // ← agrega esto
+    if (!this.cargoSeleccionado || this.cargoSeleccionado === 'todos') {
+      return this.trabajadores;
+    }
+    return this.trabajadores.filter(t => t.cargo === this.cargoSeleccionado);
+  }
+
 }

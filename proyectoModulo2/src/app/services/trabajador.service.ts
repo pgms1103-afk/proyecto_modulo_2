@@ -8,10 +8,14 @@ import { Subject } from 'rxjs';
 })
 export class TrabajadorService {
 
+  private cargoFiltro = new Subject<string>();
+  cargoFiltro$ = this.cargoFiltro.asObservable();
   private cliente: HttpClient = inject(HttpClient);
   private readonly urlbase: String = 'http://localhost:8080/trabajador';
   private refrescarTabla = new Subject<void>();
   refrescarTabla$ = this.refrescarTabla.asObservable();
+  private listaTrabajadores = new Subject<TrabajadorModel[]>();
+  listaTrabajadores$ = this.listaTrabajadores.asObservable();
 
   getTrabajadores(){
     return this.cliente.get<TrabajadorModel[]>(this.urlbase + '/mostrartrabajadores',{
@@ -28,6 +32,31 @@ export class TrabajadorService {
    {responseType: 'text' },
     );
   }
+
+  deleteTrabajadores(id: number) {
+    return this.cliente.delete(
+      this.urlbase + "/eliminartrabajador?id=" + id,
+      {responseType: 'text'}
+    );
+  }
+
+  filtrarPorCargo(cargo: string) {
+    this.cargoFiltro.next(cargo);
+  }
+
+  buscarTrabajadorPorNombre(nombre: string) {
+    return this.cliente.get<TrabajadorModel[]>(this.urlbase + '/buscartrabajadorpornombre?nombre=' + nombre,
+      {observe: 'response',
+    });
+  }
+
+
+
+  actualizarTrabajadores(trabajadores: TrabajadorModel[]) {
+    this.listaTrabajadores.next(trabajadores);
+  }
+
+
 
 
 }

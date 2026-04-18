@@ -22,9 +22,10 @@
     <div class="tarjeta tarjeta-verde">
       <div class="icono-tarjeta"><i class="fa-solid fa-helmet-safety"></i></div>
       <div class="contenido-tarjeta">
-        <span class="numero-tarjeta">0</span>
+        <span class="numero-tarjeta">{{totalTrabajadores}}</span>
         <span class="titulo-tarjeta">Trabajadores</span>
         <span class="sub-tarjeta">personal activo</span>
+        <button (click)="cargarDatos()">Cargar</button>
       </div>
     </div>
 

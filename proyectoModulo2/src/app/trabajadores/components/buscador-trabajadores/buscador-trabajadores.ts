@@ -11,6 +11,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class Buscador {
   trabajadorService = inject(TrabajadorService);
+  cargoSeleccionado: string = '';
+  nombreBuscado: string = '';
 
   @Output() clicNuevo = new EventEmitter<void>();
 
@@ -22,7 +24,21 @@ export class Buscador {
     this.trabajadorService.notificarRefresco();
   }
 
+  cambiarFiltro() {
+    this.trabajadorService.filtrarPorCargo(this.cargoSeleccionado);
+  }
 
-
-
+  buscarPorNombre() {
+    if (this.nombreBuscado.trim() === '') {
+      this.trabajadorService.notificarRefresco(); // si está vacío, recarga todo
+      return;
+    }
+    this.trabajadorService.buscarTrabajadorPorNombre(this.nombreBuscado).subscribe({
+      next: (response) => {
+        const body = response.body;
+        const resultado = Array.isArray(body) ? body : (body as any)?.data ?? [];
+        this.trabajadorService.actualizarTrabajadores(resultado);
+      }
+  });
+  }
 }
