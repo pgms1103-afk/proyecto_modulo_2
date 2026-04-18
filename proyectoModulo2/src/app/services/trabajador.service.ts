@@ -8,10 +8,18 @@ import { TrabajorModel } from '../models/trabajor.model';
 export class TrabajadorService {
 
   private cliente: HttpClient = inject(HttpClient);
-  private readonly url = "http://localhost:8080/trabajador";
+  private readonly urlbase: String = 'http://localhost:8080/trabajador';
 
   getTrabajadores(){
-    return this.cliente.get<{data: TrabajorModel[]}>(this.url + "/mostrartrabajadores");
+    return this.cliente.get<{data: TrabajorModel[]}>(this.urlbase + "/mostrartrabajadores");
   }
+
+  postCrearTrabajadores(nombre: String, cedula: number, telefono: number, email: String, cargo: String) {
+    return this.cliente.post(
+      this.urlbase + "/creartrabajador?nombre=" + nombre + "&cedula=" + cedula + "&telefono=" + telefono + "&email=" + email + "&cargo=" + cargo, null,
+   {responseType: 'text' },
+    );
+  }
+
 
 }

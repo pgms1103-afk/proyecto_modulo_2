@@ -7,10 +7,11 @@ import { Navbar } from './Inicio/navbar/navbar';
 import { Dashboard } from './Inicio/dashboard/dashboard';
 import { TrabajadoresModule } from './trabajadores/trabajadores.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [App, Navbar, Dashboard],
-  imports: [BrowserModule, AppRoutingModule, TrabajadoresModule, UsuariosModule],
+  imports: [BrowserModule, AppRoutingModule, TrabajadoresModule, UsuariosModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
