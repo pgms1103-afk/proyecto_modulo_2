@@ -8,11 +8,15 @@
 
   <app-buscador-trabajadores (clicNuevo)="abrirCreador()"></app-buscador-trabajadores>
 
-  <app-tabla-trabajadores></app-tabla-trabajadores>
+  <app-tabla-trabajadores (clicEditar)="abrirActualizador()"></app-tabla-trabajadores>
 
   <app-creador-trabajadores
     [esVisible]="mostrarCreador"
     (alCerrar)="cerrarCreador()">
   </app-creador-trabajadores>
-</div>
 
+  <app-actualizador-trabajadores
+    [esVisible]="mostrarActualizador"
+    (alCerrar)="cerrarActualizador()">
+  </app-actualizador-trabajadores>
+</div>

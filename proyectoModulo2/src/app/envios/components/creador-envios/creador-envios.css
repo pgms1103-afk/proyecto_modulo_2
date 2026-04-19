@@ -181,7 +181,7 @@
 
 .btn-primario {
   padding: 8px 20px;
-  background-color: #4f9cf9;
+  background-color: #248837;
   border: none;
   border-radius: 8px;
   color: #ffffff;
@@ -192,5 +192,5 @@
 }
 
 .btn-primario:hover {
-  background-color: #6baff9;
+  background-color: #309e44;
 }

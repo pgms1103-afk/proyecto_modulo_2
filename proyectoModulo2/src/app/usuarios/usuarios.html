@@ -1,5 +1,4 @@
 <div class="pagina-usuarios">
-
   <div class="encabezado">
     <h1 class="titulo-pagina">Gestión de Usuarios</h1>
     <p class="subtitulo-pagina">Administra los usuarios registrados en el sistema</p>
@@ -9,11 +8,15 @@
 
   <app-buscador-usuarios (clicNuevo)="abrirCreador()"></app-buscador-usuarios>
 
-  <app-tabla-usuarios></app-tabla-usuarios>
+  <app-tabla-usuarios (clicEditar)="abrirActualizador()"></app-tabla-usuarios>
 
   <app-creador-usuarios
     [esVisible]="mostrarCreador"
     (alCerrar)="cerrarCreador()">
   </app-creador-usuarios>
 
+  <app-actualizador-usuarios
+    [esVisible]="mostrarActualizador"
+    (alCerrar)="cerrarActualizador()">
+  </app-actualizador-usuarios>
 </div>

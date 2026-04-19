@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-creador-trabajadores',
+  selector: 'app-actualizador-usuarios',
   standalone: false,
-  templateUrl: './creador-trabajadores.html',
-  styleUrl: './creador-trabajadores.css',
+  templateUrl: './actualizador-usuarios.html',
+  styleUrl: './actualizador-usuarios.css',
 })
-export class CreadorTrabajadores {
+export class ActualizadorUsuarios {
 
   @Input() esVisible: boolean = false;
   @Output() alCerrar = new EventEmitter<void>();

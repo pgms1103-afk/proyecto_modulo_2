@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tabla-usuarios',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './tabla-usuarios.html',
   styleUrl: './tabla-usuarios.css',
 })
-export class TablaUsuarios {}
+export class TablaUsuarios {
+
+  @Output() clicEditar = new EventEmitter<void>();
+
+  notificarEditar() {
+    this.clicEditar.emit();
+  }
+}

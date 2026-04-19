@@ -57,20 +57,31 @@ td {
 
 .acciones {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
-.btn-editar, .btn-eliminar {
-  background: none;
-  border: none;
+.btn-accion {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #2a3545;
+  background-color: transparent;
   color: #8b949e;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  transition: all 0.15s;
 }
 
-.btn-editar:hover {
+.btn-accion.editar:hover {
+  background-color: rgba(79, 156, 249, 0.15);
+  border-color: rgba(79, 156, 249, 0.5);
   color: #4f9cf9;
 }
 
-.btn-eliminar:hover {
+.btn-accion.eliminar:hover {
+  background-color: rgba(248, 81, 73, 0.15);
+  border-color: rgba(248, 81, 73, 0.5);
   color: #f85149;
 }

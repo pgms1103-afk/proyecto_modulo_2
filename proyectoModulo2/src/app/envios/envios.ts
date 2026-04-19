@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './envios.css',
 })
 export class Envios {
-  mostrarCreador = false;
+  mostrarCreador      = false;
+  mostrarActualizador = false;
 
-  abrirCreador() { this.mostrarCreador = true; }
-  cerrarCreador() { this.mostrarCreador = false; }
+  abrirCreador()       { this.mostrarCreador = true; }
+  cerrarCreador()      { this.mostrarCreador = false; }
+
+  abrirActualizador()  { this.mostrarActualizador = true; }
+  cerrarActualizador() { this.mostrarActualizador = false; }
 }

@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './buscador-trabajadores.html',
   styleUrls: ['./buscador-trabajadores.css'],
 })
-export class Buscador {
+export class BuscadorTrabajadores {
 
   @Output() clicNuevo = new EventEmitter<void>();
 
