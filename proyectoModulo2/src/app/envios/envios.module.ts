@@ -7,10 +7,18 @@ import { EstadisticasEnvios } from './components/estadisticas-envios/estadistica
 import { BuscadorEnvios } from './components/buscador-envios/buscador-envios';
 import { TablaEnvios } from './components/tabla-envios/tabla-envios';
 import { CreadorEnvios } from './components/creador-envios/creador-envios';
+import { ActualizadorEnvios } from './components/actualizador-envios/actualizador-envios';
 
 @NgModule({
-  declarations: [Envios, EstadisticasEnvios, BuscadorEnvios, TablaEnvios, CreadorEnvios],
+  declarations: [
+    Envios,
+    EstadisticasEnvios,
+    BuscadorEnvios,
+    TablaEnvios,
+    CreadorEnvios,
+    ActualizadorEnvios
+  ],
   imports: [CommonModule, FormsModule],
-  exports: [Envios, TablaEnvios],
+  exports: [Envios],
 })
 export class EnviosModule {}

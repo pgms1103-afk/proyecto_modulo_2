@@ -17,6 +17,7 @@ export class Creador implements OnInit {
   public telefono: number = 0;
   public email: string = '';
   public cargo: string = '';
+export class CreadorTrabajadores {
 
   @Input() esVisible: boolean = false;
   @Output() alCerrar = new EventEmitter<void>();

@@ -3,6 +3,7 @@ import {TrabajadorService} from '../../../services/trabajador.service';
 import {ToastrService} from 'ngx-toastr';
 import {TrabajadorModel} from '../../../models/trabajor.model';
 import {Subscription} from 'rxjs';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tabla-trabajadores',
@@ -83,4 +84,11 @@ export class TablaTrabajadores implements OnInit {
     return this.trabajadores.filter(t => t.cargo === this.cargoSeleccionado);
   }
 
+export class TablaTrabajadores {
+
+  @Output() clicEditar = new EventEmitter<void>();
+
+  notificarEditar() {
+    this.clicEditar.emit();
+  }
 }

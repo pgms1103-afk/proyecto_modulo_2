@@ -1,12 +1,19 @@
 <div class="pagina-dashboard">
 
-  <!-- Encabezado -->
   <div class="encabezado">
-    <div>
-      <h1 class="titulo-pagina">Dato Generales</h1>
-      <p class="subtitulo-pagina">Resumen general del sistema de paquetería</p>
+    <div class="encabezado-flex">
+      <div>
+        <h1 class="titulo-pagina">Datos Paqueteria</h1>
+        <p class="subtitulo-pagina">Resumen general del sistema de paquetería</p>
+      </div>
+
+      <button class="btn-actualizar">
+        <i class="fa-solid fa-rotate"></i>
+        <span>Actualizar</span>
+      </button>
     </div>
   </div>
+  <app-resumen-tarjetas></app-resumen-tarjetas>
 
   <!-- Tarjetas de resumen -->
   <div class="fila-tarjetas">
@@ -247,5 +254,6 @@
     </div>
 
   </div>
+  <app-resumen-paneles></app-resumen-paneles>
 
 </div>

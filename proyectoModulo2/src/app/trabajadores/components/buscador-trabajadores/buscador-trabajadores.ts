@@ -13,6 +13,7 @@ export class Buscador {
   trabajadorService = inject(TrabajadorService);
   cargoSeleccionado: string = '';
   nombreBuscado: string = '';
+export class BuscadorTrabajadores {
 
   @Output() clicNuevo = new EventEmitter<void>();
 
