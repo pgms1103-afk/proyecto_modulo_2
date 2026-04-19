@@ -1,0 +1,22 @@
+<div class="pagina-envios">
+  <div class="encabezado">
+    <h1 class="titulo-pagina">Gestión de Envíos</h1>
+    <p class="subtitulo-pagina">Administra los paquetes y envíos del sistema</p>
+  </div>
+
+  <app-estadisticas-envios></app-estadisticas-envios>
+
+  <app-buscador-envios (clicNuevo)="abrirCreador()"></app-buscador-envios>
+
+  <app-tabla-envios (clicEditar)="abrirActualizador()"></app-tabla-envios>
+
+  <app-creador-envios
+    [esVisible]="mostrarCreador"
+    (alCerrar)="cerrarCreador()">
+  </app-creador-envios>
+
+  <app-actualizador-envios
+    [esVisible]="mostrarActualizador"
+    (alCerrar)="cerrarActualizador()">
+  </app-actualizador-envios>
+</div>

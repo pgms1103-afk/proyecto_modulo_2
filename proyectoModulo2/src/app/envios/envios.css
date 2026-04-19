@@ -1,0 +1,22 @@
+.pagina-envios {
+  padding: 32px 36px;
+  background-color: #0d1117;
+  min-height: 100vh;
+}
+
+.encabezado {
+  margin-bottom: 28px;
+}
+
+.titulo-pagina {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0 0 4px 0;
+}
+
+.subtitulo-pagina {
+  font-size: 13px;
+  color: #8b949e;
+  margin: 0;
+}

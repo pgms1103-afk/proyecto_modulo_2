@@ -1,0 +1,23 @@
+<div class="search-section">
+  <div class="search-wrapper">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" class="search-input" placeholder="Buscar trabajador por nombre..." [(ngModel)]="nombreBuscado" (input)="buscarPorNombre()">
+  </div>
+
+  <div class="filters-wrapper">
+    <select class="filter-select" [(ngModel)]="cargoSeleccionado" (change)="cambiarFiltro()">
+      <option value="todos">Todos</option>
+      <option value="Administrador">Admin</option>
+      <option value="Conductor">Conductor</option>
+      <option value="Manipulador">Operario</option>
+    </select>
+
+    <button class="add-button" (click)="notificarNuevo()">
+      Nuevo Trabajador
+    </button>
+
+    <button class="btn-refresh" (click)="recargarTabla()"  title="Actualizar lista">
+      <i class="fa-solid fa-rotate"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="modal-backdrop" *ngIf="esVisible" (click)="cerrar()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <h2>Nuevo envío</h2>
+      <button class="btn-cerrar-icon" (click)="cerrar()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label>Descripción</label>
+        <input type="text" class="form-input" placeholder="Descripción del paquete" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Peso (kg)</label>
+          <input type="number" class="form-input" placeholder="Ej: 2.5" />
+        </div>
+        <div class="form-group">
+          <label>Dirección destino</label>
+          <input type="text" class="form-input" placeholder="Calle 45 #12-30" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Fecha de envío</label>
+          <input type="datetime-local" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>Fecha de entrega</label>
+          <input type="datetime-local" class="form-input" />
+        </div>
+      </div>
+
+      <label>Tipo de paquete</label>
+      <div class="role-selection-group">
+
+        <label class="role-option">
+          <input type="radio" name="tipo" value="alimenticio" checked>
+          <div class="role-content">
+            <i class="fa-solid fa-apple-whole"></i>
+            <span>Alimenticio</span>
+            <small>x5.000/kg · mismo día</small>
+          </div>
+        </label>
+
+        <label class="role-option">
+          <input type="radio" name="tipo" value="no-alimenticio">
+          <div class="role-content">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>No Alimenticio</span>
+            <small>x3.000/kg · 24h</small>
+          </div>
+        </label>
+
+        <label class="role-option">
+          <input type="radio" name="tipo" value="carta">
+          <div class="role-content">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Carta</span>
+            <small>$2.000 fijo · 72h</small>
+          </div>
+        </label>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secundario" (click)="cerrar()">Cancelar</button>
+      <button class="btn-primario">Guardar Envío</button>
+    </div>
+
+  </div>
+</div>

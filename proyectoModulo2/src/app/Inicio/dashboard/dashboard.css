@@ -1,17 +1,22 @@
-/* ===== PÁGINA COMPLETA ===== */
 .pagina-dashboard {
   padding: 32px 36px;
   background-color: #0d1117;
   min-height: 100vh;
 }
 
-/* ===== ENCABEZADO ===== */
+
 .encabezado {
-  margin-bottom: 28px;
+  margin-bottom: 40px;
+}
+
+.encabezado-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .titulo-pagina {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 700;
   color: #e6edf3;
   margin: 0 0 4px 0;
@@ -23,7 +28,7 @@
   margin: 0;
 }
 
-/* ===== FILA DE TARJETAS ===== */
+
 .fila-tarjetas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -31,7 +36,7 @@
   margin-bottom: 24px;
 }
 
-/* Tarjeta base */
+
 .tarjeta {
   background-color: #161b22;
   border: 1px solid #2a3545;
@@ -79,22 +84,37 @@
   letter-spacing: 0.03em;
 }
 
-/* Colores de borde por tarjeta */
-.tarjeta-azul    { border-top: 3px solid #4f9cf9; }
-.tarjeta-verde   { border-top: 3px solid #3fb950; }
-.tarjeta-amarilla{ border-top: 3px solid #d29922; }
-.tarjeta-roja    { border-top: 3px solid #f85149; }
-.tarjeta-morada  { border-top: 3px solid #bc8cff; }
-.tarjeta-naranja { border-top: 3px solid #f0883e; }
+.tarjeta-azul {
+  border-top: 3px solid #4f9cf9;
+}
 
-/* ===== FILA DE PANELES ===== */
+.tarjeta-verde {
+  border-top: 3px solid #3fb950;
+}
+
+.tarjeta-amarilla {
+  border-top: 3px solid #d29922;
+}
+
+.tarjeta-roja {
+  border-top: 3px solid #f85149;
+}
+
+.tarjeta-morada {
+  border-top: 3px solid #bc8cff;
+}
+
+.tarjeta-naranja {
+  border-top: 3px solid #f0883e;
+}
+
 .fila-paneles {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
-/* Panel base */
+
 .panel {
   background-color: #161b22;
   border: 1px solid #2a3545;
@@ -124,7 +144,6 @@
   gap: 14px;
 }
 
-/* ===== BARRAS ===== */
 .fila-barra {
   display: flex;
   flex-direction: column;
@@ -160,21 +179,40 @@
   border-radius: 3px;
 }
 
+.barra-azul { background-color: #4f9cf9; }
+.barra-verde { background-color: #3fb950; }
+.barra-naranja { background-color: #f0883e; }
+
 .porcentaje-barra {
   font-size: 10px;
   color: #8b949e;
   text-align: right;
 }
 
-/* Colores de texto */
-.color-azul    { color: #4f9cf9; }
-.color-verde   { color: #3fb950; }
-.color-amarillo{ color: #d29922; }
-.color-rojo    { color: #f85149; }
-.color-morado  { color: #bc8cff; }
-.color-naranja { color: #f0883e; }
+.color-azul {
+  color: #4f9cf9;
+}
 
-/* ===== PANEL ESTADO ENTREGAS ===== */
+.color-verde {
+  color: #3fb950;
+}
+
+.color-amarillo {
+  color: #d29922;
+}
+
+.color-rojo {
+  color: #f85149;
+}
+
+.color-morado {
+  color: #bc8cff;
+}
+
+.color-naranja {
+  color: #f0883e;
+}
+
 .estado-cuerpo {
   flex-direction: row !important;
   align-items: center;
@@ -236,4 +274,49 @@
 .valor-leyenda {
   font-size: 12px;
   font-weight: 700;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.encabezado-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.btn-actualizar {
+  background: linear-gradient(135deg, #1b60ac 0%, #1b60ac 100%);
+  color: #ffffff;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-actualizar:hover {
+  background: linear-gradient(135deg, #4b9df4 0%, #4b9df4 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 62, 168, 0.4);
+}
+
+.btn-actualizar i {
+  transition: transform 0.4s ease;
+}
+
+.btn-actualizar:hover i {
+  transform: rotate(180deg);
 }

@@ -1,0 +1,34 @@
+<div class="search-section">
+
+  <div class="search-wrapper">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" class="search-input" placeholder="Buscar por tipo o dirección...">
+  </div>
+
+  <div class="filters-wrapper">
+
+    <select class="filter-select">
+      <option value="" disabled selected>Filtrar por Tipo</option>
+      <option>Todos</option>
+      <option>Alimenticio</option>
+      <option>No Alimenticio</option>
+      <option>Carta</option>
+    </select>
+
+    <select class="filter-select">
+      <option value="" disabled selected>Estado entrega</option>
+      <option>Todos</option>
+      <option>A tiempo</option>
+      <option>Con retraso</option>
+    </select>
+
+    <button class="add-button" (click)="notificarNuevo()">
+      Nuevo Envío
+    </button>
+
+    <button class="btn-refresh" title="Actualizar lista">
+      <i class="fa-solid fa-rotate"></i>
+    </button>
+
+  </div>
+</div>

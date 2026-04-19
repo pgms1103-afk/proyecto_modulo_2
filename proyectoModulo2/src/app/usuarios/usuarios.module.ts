@@ -7,6 +7,7 @@ import { EstadisticasUsuarios } from './components/estadisticas-usuarios/estadis
 import { BuscadorUsuarios } from './components/buscador-usuarios/buscador-usuarios';
 import { TablaUsuarios } from './components/tabla-usuarios/tabla-usuarios';
 import { CreadorUsuarios } from './components/creador-usuarios/creador-usuarios';
+import { ActualizadorUsuarios } from './components/actualizador-usuarios/actualizador-usuarios';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CreadorUsuarios } from './components/creador-usuarios/creador-usuarios'
     BuscadorUsuarios,
     TablaUsuarios,
     CreadorUsuarios,
+    ActualizadorUsuarios
   ],
   imports: [CommonModule, FormsModule],
   exports: [Usuarios],
