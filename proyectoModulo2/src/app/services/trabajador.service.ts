@@ -51,8 +51,22 @@ export class TrabajadorService {
     });
   }
 
-  actualizarTrabajadores(trabajadores: TrabajadorModel[]) {
+  actualizarTrabajadores(trabajadores: TrabajadorModel[]) {//Para buscar por nombres
     this.listaTrabajadores.next(trabajadores);
+  }
+
+  putActualizarTrabajador(id:number,nombre: String, cedula: number, telefono: number, email: String, cargo: String) {
+     return this.cliente.put(
+       this.urlbase + "/actualizartrabajador?id=" + id + "&nombre=" + nombre + "&cedula=" + cedula + "&telefono=" + telefono + "&email=" + email, null,
+       { responseType: 'text' }
+     );
+
+  }
+  putActualizarCargo(id:number, cargo:String) {
+    return this.cliente.put(
+      this.urlbase + "/actualizarcargo?id=" + id+ "&cargo=" + cargo, null,
+      { responseType: 'text' }
+    );
   }
 
 

@@ -11,18 +11,8 @@ import {TrabajadoresModule} from './trabajadores.module';
 
 export class Trabajadores {
 
-
-
   mostrarCreador = false;
   mostrarActualizador = false;
-
-  abrirCreador() { this.mostrarCreador = true; }
-  cerrarCreador() { this.mostrarCreador = false; }
-
-
-
-
-
 
   abrirCreador() {
     this.mostrarCreador = true;

@@ -9,12 +9,10 @@ import {ToastrService} from 'ngx-toastr';
   templateUrl: './buscador-trabajadores.html',
   styleUrls: ['./buscador-trabajadores.css'],
 })
-export class Buscador {
+export class BuscadorTrabajadores {
   trabajadorService = inject(TrabajadorService);
   cargoSeleccionado: string = '';
   nombreBuscado: string = '';
-export class BuscadorTrabajadores {
-
   @Output() clicNuevo = new EventEmitter<void>();
 
   notificarNuevo() {

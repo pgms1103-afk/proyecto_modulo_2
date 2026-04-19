@@ -8,7 +8,7 @@ import {ToastrService} from 'ngx-toastr';
   templateUrl: './creador-trabajadores.html',
   styleUrl: './creador-trabajadores.css',
 })
-export class Creador implements OnInit {
+export class CreadorTrabajadores implements OnInit {
 
   public trabajadorService: TrabajadorService = inject(TrabajadorService);
   public toastr: ToastrService = inject(ToastrService);
@@ -17,8 +17,6 @@ export class Creador implements OnInit {
   public telefono: number = 0;
   public email: string = '';
   public cargo: string = '';
-export class CreadorTrabajadores {
-
   @Input() esVisible: boolean = false;
   @Output() alCerrar = new EventEmitter<void>();
 

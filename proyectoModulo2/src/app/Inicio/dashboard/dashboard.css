@@ -179,6 +179,10 @@
   border-radius: 3px;
 }
 
+.barra-azul { background-color: #4f9cf9; }
+.barra-verde { background-color: #3fb950; }
+.barra-naranja { background-color: #f0883e; }
+
 .porcentaje-barra {
   font-size: 10px;
   color: #8b949e;

@@ -5,6 +5,7 @@
       <th>ID</th>
       <th>Nombre</th>
       <th>Cédula</th>
+      <th>Email</th>
       <th>Teléfono</th>
       <th>Cargo</th>
       <th>Acciones</th>
@@ -15,18 +16,17 @@
     <tr class="fila-dato">
       <td>{{trabajador.id}}</td>
       <td class="nombre-resaltado">{{trabajador.nombre}}</td>
-      <td>{{trabajador.email}}</td>
       <td>{{trabajador.cedula}}</td>
+      <td>{{trabajador.email}}</td>
       <td>{{trabajador.telefono }}</td>
       <td><span class="badge badge-azul">{{trabajador.cargo}}</span></td>
       <td>
         <div class="acciones">
-          <button class="btn-editar"><i class="fa-solid fa-pen"></i></button>
-          <button class="btn-eliminar" (click)="deleteTrabajador(trabajador.id)"><i class="fa-solid fa-trash"></i></button>
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
+
+          <button class="btn-accion editar" title="Editar" (click)="abrirEditar(trabajador)">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
-          <button class="btn-accion eliminar" title="Eliminar">
+          <button class="btn-accion eliminar" title="Eliminar" (click)="deleteTrabajador(trabajador.id)">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -40,3 +40,8 @@
     </tbody>
   </table>
 </div>
+<app-actualizador-trabajadores
+  [esVisible]="modalEditarVisible"
+  [trabajador]="trabajadorSeleccionado"
+  (alCerrar)="cerrarEditar()">
+</app-actualizador-trabajadores>
