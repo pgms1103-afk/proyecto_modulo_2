@@ -24,8 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     EnviosModule,
     FormsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
+      timeOut: 4000,
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),],
   providers: [provideBrowserGlobalErrorListeners(),

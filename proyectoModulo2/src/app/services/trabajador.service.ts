@@ -28,8 +28,9 @@ export class TrabajadorService {
 
   postCrearTrabajadores(nombre: String, cedula: number, telefono: number, email: String, cargo: String) {
     return this.cliente.post(
-      this.urlbase + "/creartrabajador?nombre=" + nombre + "&cedula=" + cedula + "&telefono=" + telefono + "&email=" + email + "&cargo=" + cargo, null,
-   {responseType: 'text' },
+      this.urlbase + "/creartrabajador?nombre=" + nombre + "&cedula=" + cedula + "&telefono=" + telefono + "&email=" + email + "&cargo=" + cargo,
+      null,
+      { responseType: 'text' }
     );
   }
 
@@ -49,8 +50,6 @@ export class TrabajadorService {
       {observe: 'response',
     });
   }
-
-
 
   actualizarTrabajadores(trabajadores: TrabajadorModel[]) {
     this.listaTrabajadores.next(trabajadores);

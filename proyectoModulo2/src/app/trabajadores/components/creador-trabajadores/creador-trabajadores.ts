@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit, inject} from '@angular/core';
 import {TrabajadorService} from '../../../services/trabajador.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-creador-trabajadores',
@@ -10,8 +11,9 @@ import {TrabajadorService} from '../../../services/trabajador.service';
 export class Creador implements OnInit {
 
   public trabajadorService: TrabajadorService = inject(TrabajadorService);
+  public toastr: ToastrService = inject(ToastrService);
   public nombre: string = '';
-  public cedula: number  = 0;
+  public cedula: number = 0;
   public telefono: number = 0;
   public email: string = '';
   public cargo: string = '';
@@ -19,16 +21,21 @@ export class Creador implements OnInit {
   @Input() esVisible: boolean = false;
   @Output() alCerrar = new EventEmitter<void>();
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   crearTrabajador() {
-    console.log('Enviando:', this.nombre, this.cedula, this.telefono, this.email, this.cargo);
     this.trabajadorService.postCrearTrabajadores(
       this.nombre, this.cedula, this.telefono, this.email, this.cargo
     ).subscribe({
-      next: (res) => console.log('Creado:', res),
-      error: (e) => console.error('Error del backend:', e.error) // ← e.error tiene el mensaje
+      next: (res) => {
+        this.toastr.success('Trabajador creado con éxito', 'Éxito');
+        this.trabajadorService.notificarRefresco();
+        this.cerrar();
+      },
+      error: (e) => {
+        console.log('mensaje error:', e.error);
+        this.toastr.error(e.error, 'Error de creación');
+      }
     });
   }
 
