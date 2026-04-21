@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, inject} from '@angular/core';
+import {UsuarioService} from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-buscador-usuarios',
@@ -7,8 +8,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './buscador-usuarios.css',
 })
 export class BuscadorUsuarios {
+  usuarioService = inject(UsuarioService);
 
   @Output() clicNuevo = new EventEmitter<void>();
+
+  recargarTabla() {
+    this.usuarioService.notificarRefresco();
+  }
 
   notificarNuevo() {
     this.clicNuevo.emit();

@@ -16,9 +16,12 @@ export class TablaTrabajadores implements OnInit, OnDestroy {
   toastr = inject(ToastrService);
   trabajadores: TrabajadorModel[] = [];
   statuscode: number = 0;
+  trabajadorSeleccionado: TrabajadorModel | null = null;
+  modalEditarVisible: boolean = false;
   private sub: Subscription = new Subscription();
   private subFiltro: Subscription = new Subscription();
   private subLista: Subscription = new Subscription();
+
 
   @Output() clicEditar = new EventEmitter<void>();
 
@@ -86,8 +89,7 @@ export class TablaTrabajadores implements OnInit, OnDestroy {
     this.clicEditar.emit();
   }
 
-  trabajadorSeleccionado: TrabajadorModel | null = null;
-  modalEditarVisible: boolean = false;
+
 
   abrirEditar(trabajador: TrabajadorModel) {
     this.trabajadorSeleccionado = {...trabajador};

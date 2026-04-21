@@ -12,102 +12,36 @@
     </tr>
     </thead>
     <tbody>
-
+      @for (usuario of usuariosFiltrados; track usuario.id) {
     <tr class="fila-usuario">
-      <td>1</td>
-      <td class="nombre">Ana Torres</td>
-      <td>1023456789</td>
-      <td>a.torres&#64;correo.com</td>
-      <td><span class="badge badge-rojo">Admin</span></td>
-      <td>—</td>
+      <td>{{usuario.id}}</td>
+      <td class="nombre">{{usuario.nombre}}</td>
+      <td class="apellido">{{usuario.apellido}}</td>
+      <td>{{usuario.cedula}}</td>
+      <td>{{usuario.correo}}</td>
+      <td><span class="badge badge-rojo">{{usuario.tipoUsuario}}</span></td>
+      <td>{{usuario.tarifa}}</td>
       <td>
         <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
+          <button class="btn-accion editar" title="Editar" (click)="abrirEditar(usuario)">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
-          <button class="btn-accion eliminar" title="Eliminar">
+          <button class="btn-accion eliminar" title="Eliminar" (click)="deleteUsuario(usuario.id)">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
       </td>
     </tr>
-
-    <tr class="fila-usuario">
-      <td>2</td>
-      <td class="nombre">Carlos Ruiz</td>
-      <td>2034567890</td>
-      <td>c.ruiz&#64;correo.com</td>
-      <td><span class="badge badge-azul">Normal</span></td>
-      <td>$5.000</td>
-      <td>
-        <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button class="btn-accion eliminar" title="Eliminar">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-
-    <tr class="fila-usuario">
-      <td>3</td>
-      <td class="nombre">Luis Méndez</td>
-      <td>3045678901</td>
-      <td>l.mendez&#64;correo.com</td>
-      <td><span class="badge badge-amarillo">Premium</span></td>
-      <td>$3.500</td>
-      <td>
-        <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button class="btn-accion eliminar" title="Eliminar">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-
-    <tr class="fila-usuario">
-      <td>4</td>
-      <td class="nombre">Sofía Gómez</td>
-      <td>4056789012</td>
-      <td>s.gomez&#64;correo.com</td>
-      <td><span class="badge badge-morado">Concurrente</span></td>
-      <td>$2.000</td>
-      <td>
-        <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button class="btn-accion eliminar" title="Eliminar">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-
-    <tr class="fila-usuario">
-      <td>5</td>
-      <td class="nombre">Pedro Vargas</td>
-      <td>5067890123</td>
-      <td>p.vargas&#64;correo.com</td>
-      <td><span class="badge badge-azul">Normal</span></td>
-      <td>$5.000</td>
-      <td>
-        <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="notificarEditar()">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button class="btn-accion eliminar" title="Eliminar">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-
+      } @empty {
+        <tr>
+          <td colspan="4" class="text-center py-3 text-muted italic">No se encontraron operaciones.</td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>
+<app-actualizador-usuarios
+  [esVisible]="modalEditarVisible"
+  [usuario]="usuarioSeleccionado"
+  (alCerrar)="cerrarEditar()">
+</app-actualizador-usuarios>
