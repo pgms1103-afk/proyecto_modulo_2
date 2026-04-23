@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
+import {TrabajadorService} from '../services/trabajador.service';
+import {TrabajadoresModule} from './trabajadores.module';
 
 @Component({
   selector: 'app-trabajadores',
@@ -6,7 +8,9 @@ import { Component } from '@angular/core';
   templateUrl: './trabajadores.html',
   styleUrl: './trabajadores.css',
 })
+
 export class Trabajadores {
+
   mostrarCreador = false;
   mostrarActualizador = false;
 

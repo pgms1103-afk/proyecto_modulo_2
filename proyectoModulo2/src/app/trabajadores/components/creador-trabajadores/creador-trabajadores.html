@@ -1,6 +1,5 @@
 <div class="modal-backdrop" *ngIf="esVisible" (click)="cerrar()">
   <div class="modal-card" (click)="$event.stopPropagation()">
-
     <div class="modal-header">
       <h2>Nuevo trabajador</h2>
       <button class="btn-cerrar-icon" (click)="cerrar()">
@@ -10,63 +9,57 @@
 
     <div class="modal-body">
       <div class="form-group">
-        <label>Nombre completo</label>
-        <input type="text" class="form-input" placeholder="Ej: Juan Pérez" />
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="nombre" class="form-input" placeholder="Nombre completo" />
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label>Cédula</label>
-          <input type="text" class="form-input" placeholder="1.234.567.890" />
+          <input type="number" class="form-input" placeholder="1.234.567.890" [(ngModel)]="cedula" />
         </div>
         <div class="form-group">
           <label>Teléfono</label>
-          <input type="text" class="form-input" placeholder="310 123 4567" />
+          <input type="number" class="form-input" placeholder="310 123 4567" [(ngModel)]="telefono"/>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Correo electrónico</label>
-        <input type="email" class="form-input" placeholder="correo@empresa.co" />
+        <label>Correo</label>
+        <input type="email" class="form-input" placeholder="correo@empresa.co" [(ngModel)]="email" />
       </div>
 
       <label>Seleccionar Cargo</label>
       <div class="role-selection-group">
-
         <label class="role-option">
-          <input type="radio" name="rol" value="admin" checked>
+          <input type="radio" name="rol" value="Administrador" [(ngModel)]="cargo">
           <div class="role-content">
             <i class="fa-solid fa-user-tie"></i>
             <span>Admin</span>
-            <small>Oficina</small>
           </div>
         </label>
 
         <label class="role-option">
-          <input type="radio" name="rol" value="conductor">
+          <input type="radio" name="rol" value="Conductor" [(ngModel)]="cargo">
           <div class="role-content">
             <i class="fa-solid fa-truck"></i>
             <span>Conductor</span>
-            <small>Logística</small>
           </div>
         </label>
 
         <label class="role-option">
-          <input type="radio" name="rol" value="manipulador">
+          <input type="radio" name="rol" value="Manipulador" [(ngModel)]="cargo">
           <div class="role-content">
-            <i class="fa-solid fa-box-open"></i>
+            <i class="fa-solid fa-box"></i>
             <span>Operario</span>
-            <small>Bodega</small>
           </div>
         </label>
-
       </div>
     </div>
 
     <div class="modal-footer">
       <button class="btn-secundario" (click)="cerrar()">Cancelar</button>
-      <button class="btn-primario">Crear trabajador</button>
+      <button class="btn-primario" (click)="crearTrabajador()">Guardar Trabajador</button>
     </div>
-
   </div>
 </div>

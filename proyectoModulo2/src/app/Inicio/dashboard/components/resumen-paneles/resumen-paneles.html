@@ -96,32 +96,32 @@
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Administrador</span>
-          <span class="cantidad-barra color-azul">8</span>
+          <span class="cantidad-barra color-azul">{{totalAdministradores}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 33%; background-color: #4f9cf9;"></div>
+          <div class="relleno-barra barra-azul" [style.width.%]="porcentajeAdmins"></div>
         </div>
-        <span class="porcentaje-barra">33%</span>
+        <span class="porcentaje-barra">{{porcentajeAdmins}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Conductor</span>
-          <span class="cantidad-barra color-verde">10</span>
+          <span class="cantidad-barra color-verde">{{totalConductores}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 42%; background-color: #3fb950;"></div>
+          <div class="relleno-barra barra-verde" [style.width.%]="porcentajeConductores"></div>
         </div>
-        <span class="porcentaje-barra">42%</span>
+        <span class="porcentaje-barra">{{porcentajeConductores}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Manipulador</span>
-          <span class="cantidad-barra color-naranja">6</span>
+          <span class="cantidad-barra color-naranja">{{totalManipuladoresPaquetes}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 25%; background-color: #f0883e;"></div>
+          <div class="relleno-barra barra-naranja" [style.width.%]="porcentajeManipuladores"></div>
         </div>
-        <span class="porcentaje-barra">25%</span>
+        <span class="porcentaje-barra">{{porcentajeManipuladores}}%</span>
       </div>
     </div>
   </div>
