@@ -1,0 +1,28 @@
+LOGIN COMPLETO
+
+
+PANEL INICIO: 
+
+-Mostrar envió totales
+
+-Mostrar envios a tiempo
+-Mostrar envios con retraso
+
+-Mostrar la tabla de paquetes por tipo
+-Mostrar el estado de entregas
+
+PANEL TRABAJADORES:
+-Que se muestren los mensajes de confirmación al actualizar
+-(no tan importante) cambiar los colores de los tipos de cargo en la tabla
+
+PANEL USUARIOS:
+-(no tan importante) cambiar los colores de los tipos de usuario en la tabla
+
+-Que se muestren los mensajes de confirmación al actualizar
+	
+-Diseño: cambiar el color del campo donde se seleccionan los tipos de usuarios, que no se vea verde
+
+-No se muestra al buscar por nombres
+
+PANEL PAQUETES:
+-Que se muestre al buscar por algún tipo en la barra de escritura
