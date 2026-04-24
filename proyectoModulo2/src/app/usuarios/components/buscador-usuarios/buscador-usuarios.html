@@ -2,24 +2,24 @@
 
   <div class="search-wrapper">
     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" class="search-input" placeholder="Buscar por nombre, cédula o correo...">
+    <input type="text" class="search-input" placeholder="Buscar por nombre..." [(ngModel)]="nombreBuscado" (input)="buscarPorNombre()">
   </div>
 
   <div class="filters-wrapper">
-    <select class="filter-select">
+    <select class="filter-select" [(ngModel)]="usuarioSeleccionado" (change)="cambiarFiltro()">
       <option value="" disabled selected>Filtrar por Tipo</option>
-      <option>Todos</option>
-      <option>Normal</option>
-      <option>Premium</option>
-      <option>Concurrente</option>
-      <option>Admin</option>
+      <option value="todos">Todos</option>
+      <option value="Normal">Normal</option>
+      <option value="Premium">Premium</option>
+      <option value="Concurrente">Concurrente</option>
+      <option value="Admin">Admin</option>
     </select>
 
     <button class="add-button" (click)="notificarNuevo()">
       Nuevo Usuario
     </button>
 
-    <button class="btn-refresh" title="Actualizar lista">
+    <button class="btn-refresh"  (click)="recargarTabla()" title="Actualizar lista">
       <i class="fa-solid fa-rotate"></i>
     </button>
   </div>
