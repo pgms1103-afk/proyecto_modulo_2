@@ -15,35 +15,40 @@
 
       <div class="form-group">
         <label>Descripción</label>
-        <input type="text" class="form-input" placeholder="Descripción del paquete" />
+        <input type="text" class="form-input" placeholder="Descripción del paquete"
+               [(ngModel)]="descripcion" />
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label>Peso (kg)</label>
-          <input type="number" class="form-input" placeholder="Ej: 2.5" />
+          <input type="number" class="form-input" placeholder="Ej: 2.5"
+                 [(ngModel)]="peso" />
         </div>
         <div class="form-group">
           <label>Dirección destino</label>
-          <input type="text" class="form-input" placeholder="Calle 45 #12-30" />
+          <input type="text" class="form-input" placeholder="Calle 45 #12-30"
+                 [(ngModel)]="destino" />
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label>Fecha de envío</label>
-          <input type="datetime-local" class="form-input" />
+          <input type="datetime-local" class="form-input"
+                 [(ngModel)]="fechaEnvio" />
         </div>
         <div class="form-group">
           <label>Fecha de entrega</label>
-          <input type="datetime-local" class="form-input" />
+          <input type="datetime-local" class="form-input"
+                 [(ngModel)]="fechaEntrega" />
         </div>
       </div>
 
       <!-- Botón guardar datos generales -->
       <div class="footer-seccion">
         <button class="btn-secundario" (click)="cerrar()">Cancelar</button>
-        <button class="btn-primario">
+        <button class="btn-primario" (click)="actualizarEnvio()">
           <i class="fa-solid fa-floppy-disk"></i> Guardar datos del envío
         </button>
       </div>
@@ -56,7 +61,7 @@
       <div class="role-selection-group">
 
         <label class="role-option">
-          <input type="radio" name="tipo" value="alimenticio">
+          <input type="radio" name="tipo" value="Alimenticio" [(ngModel)]="tipoPaquete">
           <div class="role-content">
             <i class="fa-solid fa-apple-whole"></i>
             <span>Alimenticio</span>
@@ -65,7 +70,7 @@
         </label>
 
         <label class="role-option">
-          <input type="radio" name="tipo" value="no-alimenticio">
+          <input type="radio" name="tipo" value="No Alimenticio" [(ngModel)]="tipoPaquete">
           <div class="role-content">
             <i class="fa-solid fa-boxes-stacked"></i>
             <span>No Alimenticio</span>
@@ -74,7 +79,7 @@
         </label>
 
         <label class="role-option">
-          <input type="radio" name="tipo" value="carta">
+          <input type="radio" name="tipo" value="Carta" [(ngModel)]="tipoPaquete">
           <div class="role-content">
             <i class="fa-solid fa-envelope"></i>
             <span>Carta</span>
@@ -86,7 +91,7 @@
 
       <!-- Botón guardar tipo -->
       <div class="footer-seccion">
-        <button class="btn-primario btn-tipo">
+        <button class="btn-primario btn-tipo" (click)="actualizarTipo()">
           <i class="fa-solid fa-floppy-disk"></i> Guardar tipo de paquete
         </button>
       </div>

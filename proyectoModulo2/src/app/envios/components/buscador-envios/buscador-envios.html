@@ -7,28 +7,21 @@
 
   <div class="filters-wrapper">
 
-    <select class="filter-select">
-      <option value="" disabled selected>Filtrar por Tipo</option>
-      <option>Todos</option>
-      <option>Alimenticio</option>
-      <option>No Alimenticio</option>
-      <option>Carta</option>
-    </select>
-
-    <select class="filter-select">
-      <option value="" disabled selected>Estado entrega</option>
-      <option>Todos</option>
-      <option>A tiempo</option>
-      <option>Con retraso</option>
+    <select class="filter-select" [(ngModel)]="tipoSeleccionado" (change)="cambiarFiltro()">
+      <option value="todos">Todos</option>
+      <option value="Alimenticio">Alimenticio</option>
+      <option value="No Alimenticio">No Alimenticio</option>
+      <option value="Carta">Carta</option>
     </select>
 
     <button class="add-button" (click)="notificarNuevo()">
       Nuevo Envío
     </button>
 
-    <button class="btn-refresh" title="Actualizar lista">
+    <button class="btn-refresh" (click)="recargarTabla()" title="Actualizar lista">
       <i class="fa-solid fa-rotate"></i>
     </button>
 
   </div>
+
 </div>
