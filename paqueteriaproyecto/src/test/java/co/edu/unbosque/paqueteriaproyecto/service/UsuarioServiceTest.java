@@ -135,35 +135,4 @@ public class UsuarioServiceTest {
         Assert.assertEquals(0, resultado);
         verify(usuarioRep).actualizarTipoYTarifa(eq(1L), eq("Premium"), anyDouble());
     }
-
-
-    /**
-     * Valida el flujo especializado para la creación de cuentas administrativas.
-     * Asegura que el objeto sea guardado como instancia de {@link UsuarioAdmin}.
-     */
-    @Test
-    public void testCrearAdminExitoso() {
-        when(usuarioRep.existsByCedula(anyLong())).thenReturn(false);
-        when(usuarioRep.existsByCorreo(anyString())).thenReturn(false);
-
-        UsuarioAdmin adminMock = new UsuarioAdmin();
-        when(mapper.map(any(UsuarioDTO.class), eq(UsuarioAdmin.class))).thenReturn(adminMock);
-
-        int resultado = service.crearAdmin(dtoCorrecto);
-        Assert.assertEquals(0, resultado);
-        verify(usuarioRep).save(adminMock);
-    }
-
-    /**
-     * Verifica la funcionalidad de búsqueda específica para cuentas de tipo Administrador.
-     */
-    @Test
-    public void testEncontrarAdminRetornaResultados() {
-        UsuarioAdmin admin = new UsuarioAdmin();
-        when(usuarioRep.findByTipo("Admin")).thenReturn(Optional.of(Arrays.asList(admin)));
-        when(mapper.map(any(Usuario.class), eq(UsuarioDTO.class))).thenReturn(new UsuarioDTO());
-
-        List<UsuarioDTO> result = service.encontrarAdmin();
-        Assert.assertEquals(1, result.size());
-    }
 }

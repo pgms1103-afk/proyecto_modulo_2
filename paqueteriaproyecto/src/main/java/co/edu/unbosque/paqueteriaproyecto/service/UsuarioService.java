@@ -131,8 +131,8 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
         if (data.getTipoUsuario() == null || data.getTipoUsuario().isBlank()) {
             throw new TipoUsuarioInvalidoException("El tipo de usuario no puede estar vacio");
         }
-        if (!data.getTipoUsuario().matches("Normal|Premium|Concurrente")) {
-            throw new TipoUsuarioInvalidoException("El tipo debe ser exactamente: Normal, Premium, Concurrente" 
+        if (!data.getTipoUsuario().matches("Normal|Premium|Concurrente|Admin")) {
+            throw new TipoUsuarioInvalidoException("El tipo debe ser exactamente: Normal, Premium, Concurrente, Admin" 
                                                     +" \n La primera letra debe ir en mayuscula y lo demas en minuscula.");
         }
 
@@ -149,6 +149,9 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
             break;
         case "premium":
             entity = new UsuarioPremium();
+            break;
+        case "admin":
+            entity = new UsuarioAdmin();
             break;
         }
 
@@ -178,9 +181,6 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
         List<Usuario> entityList = (List<Usuario>) usuarioRep.findAll();
         List<UsuarioDTO> dtoList = new ArrayList<>();
         entityList.forEach((entity) -> {
-            if (entity instanceof UsuarioAdmin) {
-                return;
-            }
             UsuarioDTO dto = mapper.map(entity, UsuarioDTO.class);
             if (entity instanceof UsuarioNormal) {
                 dto.setTipoUsuario("Normal");
@@ -191,6 +191,8 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
             } else if (entity instanceof UsuarioPremium) {
                 dto.setTipoUsuario("Premium");
                 dto.setTarifa(((UsuarioPremium) entity).getTarifa());
+            } else if (entity instanceof UsuarioAdmin) {
+                dto.setTipoUsuario("Admin");
             }
             dtoList.add(dto);
         });
@@ -450,95 +452,6 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
                 return 0;
             default:
                 return 1;
-        }
-    }
-
-    /**
-     * Crea un nuevo usuario con rol ADMINISTRADOR.
-     * <p>
-     * Aplica las mismas validaciones estrictas que {@link #create(UsuarioDTO)},
-     * pero mapea directamente a {@link UsuarioAdmin}.
-     * </p>
-     *
-     * @param data DTO con los datos del nuevo administrador
-     * @return 0 si se creó con éxito
-     * @throws CedulaInvalidaException     si la cédula es inválida o ya existe
-     * @throws NombreInvalidoException     si el nombre es inválido
-     * @throws ApellidoInvalidoException   si el apellido es inválido
-     * @throws CorreoInvalidoException     si el correo es inválido o ya existe
-     * @throws ContrasenaInvalidaException si la contraseña no cumple requisitos
-     */
-    public int crearAdmin(UsuarioDTO data) {
-        if (data.getCedula() <= 0) {
-            throw new CedulaInvalidaException("La cedula no puede ser negativa o cero");
-        }
-        if (String.valueOf(data.getCedula()).length() != 10) {
-            throw new CedulaInvalidaException("Numero de cedula invalido, debe tener 10 digitos");
-        }
-        if (usuarioRep.existsByCedula(data.getCedula())) {
-            throw new CedulaInvalidaException("La cedula ya esta registrada");
-        }
-        if (data.getNombre() == null || data.getNombre().isBlank()) {
-            throw new NombreInvalidoException("El nombre no puede estar vacio");
-        }
-        if (!data.getNombre().matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
-            throw new NombreInvalidoException("El nombre solo debe contener letras y espacios");
-        }
-        if (data.getNombre().contains(" ")) {
-            throw new NombreInvalidoException("El nombre no puede contener espacios dobles");
-        }
-        if (data.getApellido() == null || data.getApellido().isBlank()) {
-            throw new ApellidoInvalidoException("El apellido no puede estar vacio");
-        }
-        if (!data.getApellido().matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
-            throw new ApellidoInvalidoException("El apellido solo debe contener letras y espacios");
-        }
-        if (data.getApellido().contains(" ")) {
-            throw new ApellidoInvalidoException("El apellido no puede contener espacios dobles");
-        }
-        if (data.getCorreo() == null || data.getCorreo().isBlank()) {
-            throw new CorreoInvalidoException("El correo no puede estar vacio");
-        }
-        if (!data.getCorreo().matches("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$")) {
-            throw new CorreoInvalidoException("Correo invalido. Debe tener formato ejemplo@correo.com y solo letras minusculas");
-        }
-        if (usuarioRep.existsByCorreo(data.getCorreo())) {
-            throw new CorreoInvalidoException("El correo ya esta registrado");
-        }
-        if (data.getContrasena() == null || data.getContrasena().isBlank()) {
-            throw new ContrasenaInvalidaException("La contrasena no puede estar vacia");
-        }
-        if (data.getContrasena().length() < 8) {
-            throw new ContrasenaInvalidaException("La contrasena debe tener minimo 8 caracteres");
-        }
-        if (!data.getContrasena().matches(".*[A-Z].*")) {
-            throw new ContrasenaInvalidaException("La contrasena debe tener al menos una letra mayuscula");
-        }
-        if (!data.getContrasena().matches(".*[0-9].*")) {
-            throw new ContrasenaInvalidaException("La contrasena debe tener al menos un numero");
-        }
-        UsuarioAdmin entity = mapper.map(data, UsuarioAdmin.class);
-        usuarioRep.save(entity);
-        return 0;
-    }
-
-    /**
-     * Obtiene la lista de todos los usuarios con rol ADMINISTRADOR.
-     *
-     * @return lista de {@link UsuarioDTO} que son administradores (vacía si no hay ninguno)
-     */
-    public List<UsuarioDTO> encontrarAdmin() {
-        Optional<List<Usuario>> encontrados = usuarioRep.findByTipo("Admin");
-        if (encontrados.isPresent() && !encontrados.get().isEmpty()) {
-            List<Usuario> entityList = encontrados.get();
-            List<UsuarioDTO> dtoList = new ArrayList<>();
-            entityList.forEach((entity) -> {
-                UsuarioDTO dto = mapper.map(entity, UsuarioDTO.class);
-                dtoList.add(dto);
-            });
-            return dtoList;
-        } else {
-            return new ArrayList<UsuarioDTO>();
         }
     }
 }

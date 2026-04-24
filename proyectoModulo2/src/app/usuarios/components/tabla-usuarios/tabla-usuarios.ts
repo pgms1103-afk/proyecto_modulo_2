@@ -3,7 +3,6 @@ import {ToastrService} from 'ngx-toastr';
 import {UsuarioModel} from '../../../models/usuario.model';
 import {Subscription} from 'rxjs';
 import {UsuarioService} from '../../../services/usuario.service';
-import {TrabajadorModel} from '../../../models/trabajor.model';
 
 @Component({
   selector: 'app-tabla-usuarios',
@@ -18,9 +17,11 @@ export class TablaUsuarios implements OnInit, OnDestroy {
   usuarios: UsuarioModel[] = [];
   statuscode: number = 0;
   private sub: Subscription = new Subscription();
+  private subLista: Subscription = new Subscription();
   tipoUsuarioSeleccionado: string = '';
   usuarioSeleccionado: UsuarioModel | null = null;
   modalEditarVisible: boolean = false;
+  private subFiltro: Subscription = new Subscription();
 
   @Output() clicEditar = new EventEmitter<void>();
 
@@ -30,14 +31,24 @@ export class TablaUsuarios implements OnInit, OnDestroy {
     this.sub = this.usuarioService.refrescarTabla$.subscribe(() => {
       this.loadOperaciones();
     });
+
+    this.subLista = this.usuarioService.listaUsuarios$.subscribe(lista => {
+      this.usuarios = lista;
+    });
+
+    this.subFiltro = this.usuarioService.tipoFiltro$.subscribe(tipo => {
+      this.tipoUsuarioSeleccionado = tipo;
+    });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.subLista.unsubscribe();
+    this.subFiltro.unsubscribe();
   }
 
   loadOperaciones(): void {
-    this.usuarioService.getusuarios().subscribe({
+    this.usuarioService.getUsuarios().subscribe({
       next: (response) => {
         this.statuscode = response.status;
         const body = response.body;
@@ -67,7 +78,7 @@ export class TablaUsuarios implements OnInit, OnDestroy {
   deleteUsuario(id: number) {
     this.usuarioService.deleteUsuarios(id).subscribe({
       next: () => {
-        this.toastr.success('Trabajador eliminado');
+        this.toastr.success('Usuario eliminado');
         this.loadOperaciones();
       },
       error: (e) => this.toastr.error(e.error)
@@ -87,5 +98,4 @@ export class TablaUsuarios implements OnInit, OnDestroy {
     this.modalEditarVisible = false;
     this.usuarioSeleccionado = null;
   }
-
 }

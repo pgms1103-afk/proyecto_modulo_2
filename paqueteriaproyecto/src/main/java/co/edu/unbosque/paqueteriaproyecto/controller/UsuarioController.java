@@ -230,60 +230,6 @@ public class UsuarioController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
-    /**
-     * Crea un nuevo usuario con rol de administrador en el sistema.
-     *
-     * <p>A diferencia de {@link #crearUsuario}, este endpoint fija el {@code tipoUsuario}
-     * como {@code "Admin"} directamente, sin requerirlo como parámetro de entrada.
-     * Las mismas validaciones de datos personales aplican.</p>
-     *
-     * @param cedula     número de cédula del administrador
-     * @param nombre     nombres del administrador
-     * @param apellido   apellidos del administrador
-     * @param correo     correo electrónico del administrador; debe tener formato válido
-     * @param contrasena contraseña del administrador; debe cumplir los requisitos mínimos
-     * @return {@link ResponseEntity} con mensaje {@code "Usuario administrador creado con exito"} y estado
-     *         {@code 201 Created} si la creación es exitosa, o el mensaje de la excepción
-     *         con estado {@code 400 Bad Request} si algún dato es inválido
-     * @throws CedulaInvalidaException      si la cédula no cumple el formato esperado
-     * @throws NombreInvalidoException      si el nombre contiene caracteres no permitidos o está vacío
-     * @throws ApellidoInvalidoException    si el apellido contiene caracteres no permitidos o está vacío
-     * @throws CorreoInvalidoException      si el correo no tiene formato válido
-     * @throws ContrasenaInvalidaException  si la contraseña no cumple los requisitos mínimos
-     */
-    @PostMapping("/crearadmin")
-    public ResponseEntity<String> crearAdmin(@RequestParam long cedula, @RequestParam String nombre,
-            @RequestParam String apellido, @RequestParam String correo,
-            @RequestParam String contrasena) {
-        try {
-            UsuarioDTO nuevo = new UsuarioDTO(cedula, nombre, apellido, correo, contrasena, "Admin", 0);
-            usuarioSer.crearAdmin(nuevo);
-            return new ResponseEntity<>("Usuario administrador creado con exito", HttpStatus.CREATED);
-        } catch (CedulaInvalidaException | NombreInvalidoException | ApellidoInvalidoException
-                | CorreoInvalidoException | ContrasenaInvalidaException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    /**
-     * Retorna la lista de todos los usuarios con rol de administrador registrados en el sistema.
-     *
-     * <p>Si no existe ningún administrador registrado, se retorna el estado
-     * {@code 204 No Content} en lugar de una lista vacía con {@code 200}.</p>
-     *
-     * @return {@link ResponseEntity} con la lista de {@link UsuarioDTO} de tipo administrador
-     *         y estado {@code 202 Accepted}, o {@code 204 No Content} si no hay administradores
-     */
-    @GetMapping("/mostraradmins")
-    public ResponseEntity<List<UsuarioDTO>> mostrarAdmin() {
-        List<UsuarioDTO> admins = usuarioSer.encontrarAdmin();
-        if (admins.isEmpty()) {
-            return new ResponseEntity<List<UsuarioDTO>>(admins, HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<List<UsuarioDTO>>(admins, HttpStatus.ACCEPTED);
-        }
-    }
     
     /**
      * Autentica a un usuario y retorna su información si las credenciales son válidas.

@@ -89,8 +89,6 @@ export class TablaTrabajadores implements OnInit, OnDestroy {
     this.clicEditar.emit();
   }
 
-  trabajadorSeleccionado: TrabajadorModel | null = null;
-  modalEditarVisible: boolean = false;
 
   abrirEditar(trabajador: TrabajadorModel) {
     this.trabajadorSeleccionado = {...trabajador};

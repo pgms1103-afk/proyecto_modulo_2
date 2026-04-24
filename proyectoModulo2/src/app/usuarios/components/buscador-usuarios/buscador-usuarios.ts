@@ -8,7 +8,9 @@ import {UsuarioService} from '../../../services/usuario.service';
   styleUrl: './buscador-usuarios.css',
 })
 export class BuscadorUsuarios {
+  nombreBuscado: string = '';
   usuarioService = inject(UsuarioService);
+  usuarioSeleccionado: string = '';
 
   @Output() clicNuevo = new EventEmitter<void>();
 
@@ -19,4 +21,25 @@ export class BuscadorUsuarios {
   notificarNuevo() {
     this.clicNuevo.emit();
   }
+
+  cambiarFiltro() {
+    this.usuarioService.filtrarPorTipo(this.usuarioSeleccionado);
+  }
+
+  buscarPorNombre() {
+    if (this.nombreBuscado.trim() === '') {
+      this.usuarioService.notificarRefresco(); // si está vacío, recarga todo
+      return;
+    }
+    this.usuarioService.getBuscarPorNombre(this.nombreBuscado).subscribe({
+      next: (response) => {
+        const body = response.body;
+        const resultado = Array.isArray(body) ? body : (body as any)?.data ?? [];
+        this.usuarioService.actualizarUsuarios(resultado);
+      }
+    });
+  }
+
+
+
 }

@@ -26,13 +26,16 @@ export class CreadorEnvios implements OnInit {
   ngOnInit(): void {}
 
   crearEnvio() {
+    const fechaEnvio = this.fechaEnvio + ':00';
+    const fechaEntrega = this.fechaEntrega + ':00';
+
     this.envioService.postCrearEnvio(
       this.tipoPaquete,
       this.descripcion,
       this.peso,
       this.destino,
-      this.fechaEnvio,
-      this.fechaEntrega
+      fechaEnvio,
+      fechaEntrega
     ).subscribe({
       next: () => {
         this.toastr.success('Envío creado correctamente', 'Éxito');
@@ -41,6 +44,8 @@ export class CreadorEnvios implements OnInit {
       },
       error: (e) => {
         console.log('Error:', e.error);
+        console.log('fechaEnvio:', this.fechaEnvio);
+        console.log('fechaEntrega:', this.fechaEntrega);
         this.toastr.error(e.error, 'Error de creación');
       }
     });

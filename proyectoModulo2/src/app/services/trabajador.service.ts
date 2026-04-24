@@ -67,7 +67,6 @@ export class TrabajadorService {
   }
 
   actualizarTrabajadores(trabajadores: TrabajadorModel[]) {
-    //Para buscar por nombres
     this.listaTrabajadores.next(trabajadores);
   }
 

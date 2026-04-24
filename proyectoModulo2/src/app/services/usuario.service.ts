@@ -2,18 +2,22 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../models/usuario.model';
 import { Subject } from 'rxjs';
-import {TrabajadorModel} from '../models/trabajor.model';
+import {UsuariosModule} from '../usuarios/usuarios.module';
+import {Usuarios} from '../usuarios/usuarios';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class UsuarioService {
+
   private cliente: HttpClient = inject(HttpClient);
   private readonly urlbase: String = 'http://localhost:8080/usuario';
   private refrescarTabla = new Subject<void>();
-  private listausuarios = new Subject<TrabajadorModel[]>();
-  listaTrabajadores$ = this.listausuarios.asObservable();
+  public listaUsuarios = new Subject<UsuarioModel[]>();
+  listaUsuarios$ = this.listaUsuarios.asObservable();
+  private tipoFiltro = new Subject<string>();
+  tipoFiltro$ = this.tipoFiltro.asObservable();
 
   postCrearUsuarios(cedula:number,
                     nombre: string,
@@ -38,7 +42,7 @@ export class UsuarioService {
     this.refrescarTabla.next();
   }
 
-  getusuarios(){
+  getUsuarios(){
     return this.cliente.get<UsuarioModel[]>(this.urlbase + '/mostrarUsuarios',{
       observe: 'response',
     });
@@ -75,6 +79,19 @@ export class UsuarioService {
       this.urlbase + "/actualizartipo?id=" + id+ "&tipoUsuario=" + tipoUsuario, null,
       { responseType: 'text' }
     );
+  }
+
+  getBuscarPorNombre(nombre: string) {
+    return this.cliente.get<UsuarioModel[]>(this.urlbase + '/buscarpornombre?nombre=' + nombre,
+      {observe: 'response'});
+  }
+
+  actualizarUsuarios(usuarios: UsuarioModel[]) {
+    this.listaUsuarios.next(usuarios);
+  }
+
+  filtrarPorTipo(tipo: string) {
+    this.tipoFiltro.next(tipo);
   }
 
 }

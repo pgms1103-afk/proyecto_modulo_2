@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EnvioModel } from '../models/envio.model';
 import { Subject } from 'rxjs';
-
+import { HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -40,27 +40,30 @@ export class EnvioService {
     });
   }
 
-  postCrearEnvio(
-    tipoPaquete: string,
-    descripcion: string,
-    peso: number,
-    destino: string,
-    fechaEnvio: string,
-    fechaEntrega: string
-  ) {
-    return this.cliente.post(
-      this.urlbase +
-      '/crearpaquete?tipoPaquete=' + tipoPaquete +
-      '&descripcion=' + descripcion +
-      '&peso=' + peso +
-      '&destino=' + destino +
-      '&fechaEnvio=' + fechaEnvio +
-      '&fechaEntrega=' + fechaEntrega,
-      null,
-      { responseType: 'text' }
-    );
-  }
 
+
+postCrearEnvio(
+  tipoPaquete: string,
+  descripcion: string,
+  peso: number,
+  destino: string,
+  fechaEnvio: string,
+  fechaEntrega: string
+) {
+  const params = new HttpParams()
+    .set('tipoPaquete', tipoPaquete)
+    .set('descripcion', descripcion)
+    .set('peso', peso.toString())
+    .set('destino', destino)
+    .set('fechaEnvio', fechaEnvio)
+    .set('fechaEntrega', fechaEntrega);
+
+  return this.cliente.post(
+    this.urlbase + '/crearpaquete',
+    null,
+    { params, responseType: 'text' }
+  );
+}
   putActualizarEnvio(
     id: number,
     tipoPaquete: string,
@@ -70,17 +73,19 @@ export class EnvioService {
     fechaEnvio: string,
     fechaEntrega: string
   ) {
+    const params = new HttpParams()
+      .set('id', id.toString())
+      .set('tipoPaquete', tipoPaquete)
+      .set('descripcion', descripcion)
+      .set('peso', peso.toString())
+      .set('destino', destino)
+      .set('fechaEnvio', fechaEnvio)
+      .set('fechaEntrega', fechaEntrega);
+
     return this.cliente.put(
-      this.urlbase +
-      '/actualizarpaquete?id=' + id +
-      '&tipoPaquete=' + tipoPaquete +
-      '&descripcion=' + descripcion +
-      '&peso=' + peso +
-      '&destino=' + destino +
-      '&fechaEnvio=' + fechaEnvio +
-      '&fechaEntrega=' + fechaEntrega,
+      this.urlbase + '/actualizarpaquete',
       null,
-      { responseType: 'text' }
+      { params, responseType: 'text' }
     );
   }
 
