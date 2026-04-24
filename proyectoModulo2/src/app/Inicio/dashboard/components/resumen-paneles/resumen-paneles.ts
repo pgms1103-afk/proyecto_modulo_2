@@ -2,6 +2,8 @@ import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {TrabajadorModel} from '../../../../models/trabajor.model';
 import {TrabajadorService} from '../../../../services/trabajador.service';
 import {Subscription} from 'rxjs';
+import {UsuarioModel} from '../../../../models/usuario.model';
+import {UsuarioService} from '../../../../services/usuario.service';
 
 @Component({
   selector: 'app-resumen-paneles',
@@ -13,21 +15,29 @@ export class ResumenPaneles implements OnInit, OnDestroy {
 
   trabajadores: TrabajadorModel[] = [];
   trabajadorService = inject(TrabajadorService);
-  private sub: Subscription = new Subscription();
+  private subTrabajadores: Subscription = new Subscription();
   private porcentaje: number = 0;
+  usuarios: UsuarioModel[] = [];
+  usuariosService = inject(UsuarioService);
+  private subUsuarios: Subscription = new Subscription();
 
   ngOnInit() {
-    this.cargarDatos();
-    this.sub = this.trabajadorService.refrescarTabla$.subscribe(() => {
-      this.cargarDatos();
+    this.cargarDatosTrabajadores();
+    this.cargarDatosUsuarios();
+    this.subTrabajadores = this.trabajadorService.refrescarTabla$.subscribe(() => {
+      this.cargarDatosTrabajadores();
     });
+    this.subUsuarios = this.usuariosService.refrescarTabla$.subscribe(() => {
+      this.cargarDatosUsuarios();
+    })
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.subTrabajadores.unsubscribe();
+    this.subUsuarios.unsubscribe();
   }
 
-  cargarDatos() {
+  cargarDatosTrabajadores() {
     this.trabajadorService.getTrabajadores().subscribe({
       next: (response) => {
         const body = response.body;
@@ -70,6 +80,62 @@ export class ResumenPaneles implements OnInit, OnDestroy {
   get porcentajeManipuladores(): number{
     if (this.totalTrabajadores === 0) return 0;
     return Math.round((this.totalManipuladoresPaquetes / this.totalTrabajadores) * 100);
+  }
+
+  //--------------------------------------------------------------------------------------------
+  //USUARIOS:
+  cargarDatosUsuarios() {
+    this.usuariosService.getUsuarios().subscribe({
+      next: (response) => {
+        const body = response.body;
+        if (body && (body as any).data) {
+          this.usuarios = (body as any).data;
+        } else if (Array.isArray(body)) {
+          this.usuarios = [...body];
+        }
+      },
+      error: () => this.usuarios = []
+    });
+  }
+
+  get totalUsuarios():number{
+    return this.usuarios.length;
+  }
+
+  get totalUsuariosAdmins():number{
+    return this.usuarios.filter(cadaUsuario => cadaUsuario.tipoUsuario === "Admin").length;
+  }
+
+  get totalUsuariosNormales():number{
+    return this.usuarios.filter(cadaUsuario => cadaUsuario.tipoUsuario === "Normal").length;
+  }
+
+  get totalUsuariosPremium():number{
+    return this.usuarios.filter(cadaUsuario => cadaUsuario.tipoUsuario === "Premium").length;
+  }
+
+  get totalUsuariosConcurrentes():number{
+    return this.usuarios.filter(cadaUsuario => cadaUsuario.tipoUsuario === "Concurrente").length;
+  }
+
+  get porcentajeUsuariosAdmins(): number{
+    if (this.totalUsuarios === 0) return 0;
+    return Math.round((this.totalUsuariosAdmins / this.totalUsuarios) * 100);
+  }
+
+  get porcentajeUsuariosNormales(): number{
+    if (this.totalUsuarios === 0) return 0;
+    return Math.round((this.totalUsuariosNormales / this.totalUsuarios) * 100);
+  }
+
+  get porcentajeUsuariosPremium(): number{
+    if (this.totalUsuarios === 0) return 0;
+    return Math.round((this.totalUsuariosPremium / this.totalUsuarios) * 100);
+  }
+
+  get porcentajeUsuariosConcurrentes(): number{
+    if (this.totalUsuarios === 0) return 0;
+    return Math.round((this.totalUsuariosConcurrentes/ this.totalUsuarios) * 100);
   }
 
 }

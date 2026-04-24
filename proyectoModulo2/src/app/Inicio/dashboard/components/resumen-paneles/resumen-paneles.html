@@ -8,42 +8,42 @@
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Normal</span>
-          <span class="cantidad-barra color-azul">89</span>
+          <span class="cantidad-barra color-azul">{{totalUsuariosNormales}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 63%; background-color: #4f9cf9;"></div>
+          <div class="relleno-barra barra-azul" [style.width.%]="porcentajeUsuariosNormales"></div>
         </div>
-        <span class="porcentaje-barra">63%</span>
+        <span class="porcentaje-barra">{{porcentajeUsuariosNormales}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Premium</span>
-          <span class="cantidad-barra color-amarillo">31</span>
+          <span class="cantidad-barra color-amarillo">{{totalUsuariosPremium}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 22%; background-color: #d29922;"></div>
+          <div class="relleno-barra barra-amarillo" [style.width.%]="porcentajeUsuariosPremium"></div>
         </div>
-        <span class="porcentaje-barra">22%</span>
+        <span class="porcentaje-barra">{{porcentajeUsuariosPremium}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Concurrente</span>
-          <span class="cantidad-barra color-morado">19</span>
+          <span class="cantidad-barra color-morado">{{totalUsuariosConcurrentes}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 13%; background-color: #bc8cff;"></div>
+          <div class="relleno-barra barra-morado" [style.width.%]="porcentajeUsuariosConcurrentes"></div>
         </div>
-        <span class="porcentaje-barra">13%</span>
+        <span class="porcentaje-barra">{{porcentajeUsuariosConcurrentes}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Admin</span>
-          <span class="cantidad-barra color-rojo">3</span>
+          <span class="cantidad-barra color-rojo">{{totalUsuariosAdmins}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 2%; background-color: #f85149;"></div>
+          <div class="relleno-barra barra-rojo" [style.width.%]="porcentajeUsuariosAdmins"></div>
         </div>
-        <span class="porcentaje-barra">2%</span>
+        <span class="porcentaje-barra">{{porcentajeUsuariosAdmins}}%</span>
       </div>
     </div>
   </div>
