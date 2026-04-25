@@ -11,7 +11,7 @@ PANEL TRABAJADORES:
 PANEL USUARIOS:
 
 -Que se muestren los mensajes de confirmación al actualizar
--No se muestra al buscar por nombres
+-No se muestra al buscar por nombres(problema desde el back)
 
 PANEL PAQUETES:
 -Que se muestre al buscar por algún tipo en la barra de escritura
