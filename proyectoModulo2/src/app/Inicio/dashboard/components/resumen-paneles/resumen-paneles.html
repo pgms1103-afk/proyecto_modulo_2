@@ -57,32 +57,32 @@
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Alimenticio</span>
-          <span class="cantidad-barra color-verde">145</span>
+          <span class="cantidad-barra color-verde">{{totalEnviosAlimenticios}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 46%; background-color: #3fb950;"></div>
+          <div class="relleno-barra barra-verde" [style.width.%]="porsentajeEnviosAlimenticios"></div>
         </div>
-        <span class="porcentaje-barra">46%</span>
+        <span class="porcentaje-barra">{{porsentajeEnviosAlimenticios}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">No Alimenticio</span>
-          <span class="cantidad-barra color-azul">121</span>
+          <span class="cantidad-barra color-azul">{{totalEnviosNoalimenticios}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 38%; background-color: #4f9cf9;"></div>
+          <div class="relleno-barra barra-azul" [style.width.%]="porsentajeEnviosNoalimenticios"></div>
         </div>
-        <span class="porcentaje-barra">38%</span>
+        <span class="porcentaje-barra">{{porsentajeEnviosNoalimenticios}}%</span>
       </div>
       <div class="fila-barra">
         <div class="meta-barra">
           <span class="nombre-barra">Carta</span>
-          <span class="cantidad-barra color-amarillo">52</span>
+          <span class="cantidad-barra color-amarillo">{{totalEnviosCartas}}</span>
         </div>
         <div class="pista-barra">
-          <div class="relleno-barra" style="width: 16%; background-color: #d29922;"></div>
+          <div class="relleno-barra barra-amarillo" [style.width.%]="porsentajeEnviosCartas"></div>
         </div>
-        <span class="porcentaje-barra">16%</span>
+        <span class="porcentaje-barra">{{porsentajeEnviosCartas}}%</span>
       </div>
     </div>
   </div>
@@ -132,23 +132,25 @@
       <h2 class="titulo-panel">Estado de Entregas</h2>
     </div>
     <div class="cuerpo-panel estado-cuerpo">
-      <div class="circulo-estado">
-        <div class="numero-circulo">87%</div>
+      <div class="circulo-estado"
+           [style.--p-verde]="porsentajeEnviosAtiempo"
+           [style.--p-naranja]="porsentajeEnviosRetraso">
+        <div class="numero-circulo">{{porsentajeEnviosAtiempo}}%</div>
         <div class="label-circulo">a tiempo</div>
       </div>
       <div class="leyenda-estado">
         <div class="item-leyenda">
-          <span class="punto-leyenda" style="background-color: #3fb950;"></span>
+          <span class="punto-leyenda" [style.width.%]="porsentajeEnviosAtiempo"></span>
           <div>
-            <div class="nombre-leyenda">A tiempo</div>
-            <div class="valor-leyenda color-verde">276 envíos</div>
+            <div class="nombre-leyenda">A Tiempo</div>
+            <div class="valor-leyenda color-verde">{{totalEnviosAtiempo}}</div>
           </div>
         </div>
         <div class="item-leyenda">
-          <span class="punto-leyenda" style="background-color: #f0883e;"></span>
+          <span class="punto-leyenda" [style.width.%]="porsentajeEnviosRetraso"></span>
           <div>
-            <div class="nombre-leyenda">Con retraso</div>
-            <div class="valor-leyenda color-naranja">42 envíos</div>
+            <div class="nombre-leyenda">Con Retraso</div>
+            <div class="valor-leyenda color-naranja">{{totalEnviosRestraso}}</div>
           </div>
         </div>
       </div>

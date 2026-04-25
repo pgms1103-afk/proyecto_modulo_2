@@ -1,6 +1,6 @@
 <div class="fila-tarjetas">
   <div class="tarjeta tarjeta-azul">
-    <div class="icono-tarjeta"><i class="fa-solid fa-users color-blanco"></i></div>
+    <div class="icono-tarjeta"><i class="fa-solid fa-users"></i></div>
     <div class="contenido-tarjeta">
       <span class="numero-tarjeta">{{totalUsuarios}}</span>
       <span class="titulo-tarjeta">Total Usuarios</span>
@@ -13,16 +13,16 @@
     <div class="contenido-tarjeta">
       <span class="numero-tarjeta">{{totalTrabajadores}}</span>
       <span class="titulo-tarjeta">Trabajadores</span>
-      <span class="sub-tarjeta">personal activo</span>
+      <span class="sub-tarjeta">Personal activo</span>
     </div>
   </div>
 
   <div class="tarjeta tarjeta-amarilla">
     <div class="icono-tarjeta"><i class="fa-solid fa-envelopes-bulk"></i></div>
     <div class="contenido-tarjeta">
-      <span class="numero-tarjeta">0</span>
+      <span class="numero-tarjeta">{{totalEnvios}}</span>
       <span class="titulo-tarjeta">Envíos Totales</span>
-      <span class="sub-tarjeta">paquetes registrados</span>
+      <span class="sub-tarjeta">Paquetes registrados</span>
     </div>
   </div>
 
@@ -31,25 +31,25 @@
     <div class="contenido-tarjeta">
       <span class="numero-tarjeta">{{totalAdmins}}</span>
       <span class="titulo-tarjeta">Administradores</span>
-      <span class="sub-tarjeta">con acceso total</span>
+      <span class="sub-tarjeta">Con acceso total</span>
     </div>
   </div>
 
   <div class="tarjeta tarjeta-morada">
     <div class="icono-tarjeta"><i class="fa-regular fa-clock"></i></div>
     <div class="contenido-tarjeta">
-      <span class="numero-tarjeta">0</span>
+      <span class="numero-tarjeta">{{totalEnviosATiempo}}</span>
       <span class="titulo-tarjeta">Envíos a Tiempo</span>
-      <span class="sub-tarjeta">entregados correctamente</span>
+      <span class="sub-tarjeta">Entregados correctamente</span>
     </div>
   </div>
 
   <div class="tarjeta tarjeta-naranja">
     <div class="icono-tarjeta"><i class="fa-solid fa-clock-rotate-left"></i></div>
     <div class="contenido-tarjeta">
-      <span class="numero-tarjeta">0</span>
+      <span class="numero-tarjeta">{{totalEnviosConRetraso}}</span>
       <span class="titulo-tarjeta">Envíos con Retraso</span>
-      <span class="sub-tarjeta">fuera de plazo</span>
+      <span class="sub-tarjeta">Fuera de plazo</span>
     </div>
   </div>
 </div>

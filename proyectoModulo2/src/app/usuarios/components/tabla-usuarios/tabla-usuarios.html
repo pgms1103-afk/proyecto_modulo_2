@@ -14,25 +14,32 @@
     </thead>
     <tbody>
       @for (usuario of usuariosFiltrados; track usuario.id) {
-    <tr class="fila-usuario">
-      <td>{{usuario.id}}</td>
-      <td class="nombre">{{usuario.nombre}}</td>
-      <td class="apellido">{{usuario.apellido}}</td>
-      <td>{{usuario.cedula}}</td>
-      <td>{{usuario.correo}}</td>
-      <td><span class="badge badge-rojo">{{usuario.tipoUsuario}}</span></td>
-      <td>{{usuario.tarifa}}</td>
-      <td>
-        <div class="acciones">
-          <button class="btn-accion editar" title="Editar" (click)="abrirEditar(usuario)">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          <button class="btn-accion eliminar" title="Eliminar" (click)="deleteUsuario(usuario.id)">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
+        <tr class="fila-usuario">
+          <td>{{ usuario.id }}</td>
+          <td class="nombre">{{ usuario.nombre }}</td>
+          <td class="apellido">{{ usuario.apellido }}</td>
+          <td>{{ usuario.cedula }}</td>
+          <td>{{ usuario.correo }}</td>
+          <td><span class="badge"
+                    [class.badge-azul]="usuario.tipoUsuario === 'Normal'"
+                    [class.badge-amarillo]="usuario.tipoUsuario === 'Premium'"
+                    [class.badge-morado]="usuario.tipoUsuario === 'Concurrente'"
+                    [class.badge-rojo]="usuario.tipoUsuario === 'Admin'">
+            {{usuario.tipoUsuario}}
+          </span>
+          </td>
+          <td>{{ usuario.tarifa }}</td>
+          <td>
+            <div class="acciones">
+              <button class="btn-accion editar" title="Editar" (click)="abrirEditar(usuario)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="btn-accion eliminar" title="Eliminar" (click)="deleteUsuario(usuario.id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
       } @empty {
         <tr>
           <td colspan="4" class="text-center py-3 text-muted italic">No se encontraron operaciones.</td>

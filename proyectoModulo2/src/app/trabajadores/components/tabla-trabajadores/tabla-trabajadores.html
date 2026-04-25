@@ -19,7 +19,12 @@
       <td>{{trabajador.cedula}}</td>
       <td>{{trabajador.email}}</td>
       <td>{{trabajador.telefono }}</td>
-      <td><span class="badge badge-azul">{{trabajador.cargo}}</span></td>
+      <td><span class="badge"
+                [class.badge-azul]="trabajador.cargo === 'Administrador'"
+                [class.badge-amarillo]="trabajador.cargo === 'Conductor'"
+                [class.badge-morado]="trabajador.cargo === 'Manipulador'">
+        {{trabajador.cargo}}
+      </span></td>
       <td>
         <div class="acciones">
 

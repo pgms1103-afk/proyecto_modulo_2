@@ -1,17 +1,19 @@
-LOGIN COMPLETO
+Falta login completo
 
 
 PANEL INICIO: 
 
-
+Ya esta listo
 
 PANEL TRABAJADORES:
 -Que se muestren los mensajes de confirmación al actualizar
+-Faltan excepciones al actualizar, solo aparecen por consola
 
 PANEL USUARIOS:
 
+-Faltan excepciones al actualizar, solo aparecen por consola
 -Que se muestren los mensajes de confirmación al actualizar
--No se muestra al buscar por nombres(problema desde el back)
+-No se muestra al buscar por nombres (problema desde el back)
 
 PANEL PAQUETES:
 -Que se muestre al buscar por algún tipo en la barra de escritura
