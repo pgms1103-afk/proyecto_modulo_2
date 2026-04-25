@@ -6,6 +6,7 @@
 
   <div class="filters-wrapper">
     <select class="filter-select" [(ngModel)]="cargoSeleccionado" (change)="cambiarFiltro()">
+      <option value="" disabled selected>Filtrar por Tipo</option>
       <option value="todos">Todos</option>
       <option value="Administrador">Admin</option>
       <option value="Conductor">Conductor</option>

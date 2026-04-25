@@ -10,10 +10,9 @@
   border-radius: 8px;
 }
 
-/* Contenedor del Input */
 .search-wrapper {
   position: relative;
-  flex: 1; /* Toma todo el espacio disponible */
+  flex: 1;
 }
 
 .search-icon {
@@ -42,7 +41,7 @@
   box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
 }
 
-/* Grupo de Filtros y Botón */
+
 .filters-wrapper {
   display: flex;
   gap: 12px;
@@ -50,14 +49,14 @@
 }
 
 .filter-select {
-  background-color: #0d1117;
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  padding: 9px 12px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 8px 14px;
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  color: #e6edf3;
+  font-size: 13px;
   cursor: pointer;
-  min-width: 160px;
+  outline: none;
 }
 
 .add-button {

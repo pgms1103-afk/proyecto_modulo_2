@@ -61,8 +61,15 @@
   outline: none;
 }
 
-.filter-select:focus {
-  background-color: #238636;
+.filter-select {
+  padding: 8px 14px;
+  background-color: #161b22;
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  color: #e6edf3;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
 }
 
 .add-button {
