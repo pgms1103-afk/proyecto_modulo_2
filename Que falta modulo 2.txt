@@ -6,17 +6,13 @@ PANEL INICIO:
 Ya esta listo
 
 PANEL TRABAJADORES:
--Que se muestren los mensajes de confirmación al actualizar (DAVID): Check
--Faltan excepciones al actualizar, solo aparecen por consola (DAVID): Check
+LISTOOO
 
 PANEL USUARIOS:
-
--Faltan excepciones al actualizar, solo aparecen por consola (DAVID): Check
--Que se muestren los mensajes de confirmación al actualizar (DAVID): Check
--No se muestra al buscar por nombres (problema desde el back) (DAVID): Corregido era un error en el manejo de excepciones
+LISTOOO
 
 PANEL PAQUETES:
--Que se muestre al buscar por algún tipo en la barra de escritura (Busca por "A tiempo" o "Con retraso" en la barra de escritura, podríamos eliminar los otros endPoint de get, porque no veo otra forma de usarlos, aparte ya hay suficientes filtros.
+LISTOOO
 
 
 BACK:
