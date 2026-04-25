@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, inject } from '@angular/core';
 import { EnvioService } from '../../../services/envio.service';
+import {EnvioModel} from '../../../models/envio.model';
+import {TrabajadorModel} from '../../../models/trabajor.model';
 
 @Component({
   selector: 'app-buscador-envios',
@@ -11,7 +13,7 @@ export class BuscadorEnvios {
 
   envioService = inject(EnvioService);
   tipoSeleccionado: string = 'todos';
-
+  textoBuscado: string = '';
   @Output() clicNuevo = new EventEmitter<void>();
 
   notificarNuevo() {
@@ -25,4 +27,9 @@ export class BuscadorEnvios {
   cambiarFiltro() {
     this.envioService.filtrarPorTipo(this.tipoSeleccionado);
   }
+
+  buscar() {
+    this.envioService.filtrarPorEstado(this.textoBuscado);
+  }
+
 }

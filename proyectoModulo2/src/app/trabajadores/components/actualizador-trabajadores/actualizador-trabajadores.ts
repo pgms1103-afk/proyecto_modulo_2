@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnChanges, inject} from '@angular/core';
 import { TrabajadorModel } from '../../../models/trabajor.model';
 import {TrabajadorService} from '../../../services/trabajador.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-actualizador-trabajadores',
@@ -10,13 +11,14 @@ import {TrabajadorService} from '../../../services/trabajador.service';
 })
 export class ActualizadorTrabajadores implements OnChanges {
 
-  trabajadorService = inject(TrabajadorService);
-  id: number = 0;
-  nombre: string = '';
-  cedula: number = 0;
-  telefono: number = 0;
-  email: string = '';
-  cargo: string = '';
+  public trabajadorService = inject(TrabajadorService);
+  public toastr: ToastrService = inject(ToastrService);
+  public id: number = 0;
+  public nombre: string = '';
+  public cedula: number = 0;
+  public telefono: number = 0;
+  public email: string = '';
+  public cargo: string = '';
 
   @Input() esVisible: boolean = false;
   @Input() trabajador: TrabajadorModel | null = null;
@@ -45,13 +47,31 @@ export class ActualizadorTrabajadores implements OnChanges {
       this.cedula,
       this.telefono,
       this.email,
-      this.cargo).subscribe();
+      this.cargo).subscribe({
+      next: (res) => {
+        this.toastr.success('Trabajador actualizado correctamente', 'Éxito');
+        this.trabajadorService.notificarRefresco();
+        this.cerrar();
+      },
+      error: (e) => {
+        this.toastr.error(e.error, 'Error al actualizar trabajador');
+      }
+    });
   }
 
   actualizarCargo(){
     this.trabajadorService.putActualizarCargo(
       this.trabajador!.id,
       this.cargo
-    ).subscribe();
+    ).subscribe({
+      next: (res) => {
+        this.toastr.success('Cargo actualizado correctamente', 'Éxito');
+        this.trabajadorService.notificarRefresco();
+        this.cerrar();
+      },
+      error: (e) => {
+        this.toastr.error(e.error, 'Error al actualizar cargo');
+      }
+    });
   }
 }

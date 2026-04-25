@@ -6,14 +6,14 @@ PANEL INICIO:
 Ya esta listo
 
 PANEL TRABAJADORES:
--Que se muestren los mensajes de confirmación al actualizar
--Faltan excepciones al actualizar, solo aparecen por consola
+LISTOOO
 
 PANEL USUARIOS:
-
--Faltan excepciones al actualizar, solo aparecen por consola
--Que se muestren los mensajes de confirmación al actualizar
--No se muestra al buscar por nombres (problema desde el back)
+LISTOOO
 
 PANEL PAQUETES:
--Que se muestre al buscar por algún tipo en la barra de escritura
+LISTOOO
+
+
+BACK:
+-Hacer jUnit al método q David creo. (MARTIN)

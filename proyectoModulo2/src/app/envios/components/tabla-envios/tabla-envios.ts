@@ -23,6 +23,8 @@ export class TablaEnvios implements OnInit, OnDestroy {
   private subFiltro: Subscription = new Subscription();
   private subLista: Subscription = new Subscription();
 
+  textoBuscado: string = '';
+  private subEstado: Subscription = new Subscription();
   @Output() clicEditar = new EventEmitter<void>();
 
 
@@ -46,12 +48,17 @@ export class TablaEnvios implements OnInit, OnDestroy {
     this.subLista = this.envioService.listaEnvios$.subscribe(lista => {
       this.envios = lista;
     });
+
+    this.subEstado = this.envioService.estadoFiltro$.subscribe(texto => {
+      this.textoBuscado = texto;
+    });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
     this.subFiltro.unsubscribe();
     this.subLista.unsubscribe();
+    this.subEstado.unsubscribe();
   }
 
   cargarEnvios(): void {
@@ -87,10 +94,20 @@ export class TablaEnvios implements OnInit, OnDestroy {
 
 
   get enviosFiltrados(): EnvioModel[] {
-    if (!this.tipoSeleccionado || this.tipoSeleccionado === 'todos') {
-      return this.envios;
-    }
-    return this.envios.filter(e => e.tipoPaquete === this.tipoSeleccionado);
+    return this.envios.filter(e => {
+      const matchTipo = !this.tipoSeleccionado ||
+        this.tipoSeleccionado === 'todos' ||
+        e.tipoPaquete === this.tipoSeleccionado;
+
+      const texto = this.textoBuscado.toLowerCase();
+      const matchTexto = !texto ||
+        e.tipoPaquete?.toLowerCase().includes(texto) ||
+        e.direccionDestino?.toLowerCase().includes(texto) ||
+        (texto === 'a tiempo' && e.entregaATiempo === true) ||
+        (texto === 'con retraso' && e.entregaATiempo === false);
+
+      return matchTipo && matchTexto;
+    });
   }
 
 

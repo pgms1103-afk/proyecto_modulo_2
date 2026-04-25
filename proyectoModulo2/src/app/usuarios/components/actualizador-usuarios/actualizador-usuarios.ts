@@ -3,6 +3,7 @@ import {TrabajadorService} from '../../../services/trabajador.service';
 import {UsuarioService} from '../../../services/usuario.service';
 import {TrabajadorModel} from '../../../models/trabajor.model';
 import {UsuarioModel} from '../../../models/usuario.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-actualizador-usuarios',
@@ -12,14 +13,15 @@ import {UsuarioModel} from '../../../models/usuario.model';
 })
 export class ActualizadorUsuarios implements OnChanges{
 
-  usuarioService = inject(UsuarioService);
-  id: number = 0;
-  cedula: number = 0;
-  nombre: string = '';
-  apellido: string = '';
-  correo: string = '';
-  contrasena: string = '';
-  tipoUsuario: string = '';
+  public usuarioService = inject(UsuarioService);
+  public toastr: ToastrService = inject(ToastrService);
+  public id: number = 0;
+  public cedula: number = 0;
+  public nombre: string = '';
+  public apellido: string = '';
+  public correo: string = '';
+  public contrasena: string = '';
+  public tipoUsuario: string = '';
 
 
   @Input() esVisible: boolean = false;
@@ -32,7 +34,7 @@ export class ActualizadorUsuarios implements OnChanges{
       this.nombre = this.usuario.nombre;
       this.apellido = this.usuario.apellido;
       this.correo = this.usuario.correo;
-      this.contrasena = this.usuario.contrasena;
+      this.contrasena = '';
     }
   }
 
@@ -45,8 +47,14 @@ export class ActualizadorUsuarios implements OnChanges{
       this.correo,
       this.contrasena
     ).subscribe({
-      next: (res) => console.log('Actualizado:', res),
-      error: (e) => console.error('Mensaje backend:', e.error)
+      next: (res) => {
+        this.toastr.success('Usuario actualizado correctamente', 'Éxito');
+        this.usuarioService.notificarRefresco();
+        this.cerrar();
+      },
+      error: (e) => {
+        this.toastr.error(e.error, 'Error al actualizar usuario');
+      }
     });
   }
 
@@ -54,7 +62,16 @@ export class ActualizadorUsuarios implements OnChanges{
     this.usuarioService.putActualizarTipo(
       this.usuario!.id,
       this.tipoUsuario
-    ).subscribe();
+    ).subscribe({
+      next: (res) => {
+        this.toastr.success('Tipo de usuario actualizado correctamente', 'Éxito');
+        this.usuarioService.notificarRefresco();
+        this.cerrar();
+      },
+      error: (e) => {
+        this.toastr.error(e.error, 'Error al actualizar tipo de usuario');
+      }
+    });
   }
 
   cerrar() {

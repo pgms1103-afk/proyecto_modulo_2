@@ -330,24 +330,6 @@ public class EnvioService implements CRUDoperation<EnvioDTO> {
         return dtoList;
     }
 
-    /**
-     * Busca envíos por fecha de entrega.
-     *
-     * @param fechaEntrega fecha a filtrar
-     * @return lista de resultados
-     */
-    public List<EnvioDTO> findByFechaEntrega(LocalDateTime fechaEntrega) {
-        if (fechaEntrega == null) {
-            throw new FechaInvalidaException("La fecha de entrega no puede ser nula");
-        }
-        
-        Optional<List<Envio>> encontrados = repo.findByFechaEntrega(fechaEntrega);
-        List<EnvioDTO> dtoList = new ArrayList<>();
-        if (encontrados.isPresent() && !encontrados.get().isEmpty()) {
-            encontrados.get().forEach(entity -> dtoList.add(mapper.map(entity, EnvioDTO.class)));
-        }
-        return dtoList;
-    }
 
     /**
      * Busca envíos según si fueron entregados a tiempo.

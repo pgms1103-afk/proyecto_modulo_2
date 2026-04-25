@@ -182,29 +182,7 @@ public class EnvioController {
 
         } 
     }
-
-    /**
-     * Busca y retorna los envíos cuya fecha de entrega coincida con la indicada.
-     *
-     * @param fecha fecha y hora de entrega por la cual se desea filtrar
-     * @return {@code 202 Accepted} con la lista filtrada de {@link EnvioDTO} si hay resultados,
-     *         {@code 204 No Content} si no hay coincidencias,
-     *         {@code 400 Bad Request} si la fecha es inválida
-     */
-    @GetMapping("/buscarpaqueteporpechaentrega")
-    public ResponseEntity<List<EnvioDTO>> buscarPaquetePorFechaEntrega(@RequestParam LocalDateTime fecha) {
-        try {
-            List<EnvioDTO> lista = service.findByFechaEntrega(fecha);
-            if (lista.isEmpty()) {
-                return new ResponseEntity<List<EnvioDTO>>(lista, HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<List<EnvioDTO>>(lista, HttpStatus.ACCEPTED);
-
-        } catch (FechaInvalidaException e) {
-            return new ResponseEntity<List<EnvioDTO>>(HttpStatus.BAD_REQUEST);
-
-        } 
-    }
+   
 
     /**
      * Busca y retorna los envíos filtrados según su estado de entrega a tiempo.
