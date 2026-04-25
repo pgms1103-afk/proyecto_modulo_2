@@ -31,7 +31,7 @@ export class CreadorUsuarios implements OnInit{
        this.cedula, this.nombre, this.apellido, this.correo, this.contrasena, this.tipoUsuario
     ).subscribe({
       next: (res) => {
-        this.toastr.success('Trabajador creado con éxito', 'Éxito');
+        this.toastr.success('Usuario creado con éxito', 'Éxito');
         this.usuarioService.notificarRefresco();
         this.cerrar();
       },

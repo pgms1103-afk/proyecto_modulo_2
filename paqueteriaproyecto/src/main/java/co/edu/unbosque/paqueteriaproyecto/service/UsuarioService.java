@@ -331,10 +331,7 @@ public class UsuarioService implements CRUDoperation<UsuarioDTO> {
 	    if (!nombre.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
 	        throw new NombreInvalidoException("El nombre solo debe contener letras y espacios");
 	    }
-	    String[] palabras = nombre.trim().split("\\s+");
-	    if (palabras.length < 2) {
-	        throw new NombreInvalidoException("El nombre debe tener Nombre y Apellido");
-	    }
+	    
     	
         Optional<List<Usuario>> encontrados = usuarioRep.findByNombre(nombre);
         List<Usuario> entityList = encontrados.get();
