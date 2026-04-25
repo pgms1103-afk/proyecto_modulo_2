@@ -35,7 +35,7 @@ export class BuscadorTrabajadores {
     this.trabajadorService.buscarTrabajadorPorNombre(this.nombreBuscado).subscribe({
       next: (response) => {
         const body = response.body;
-        const resultado = Array.isArray(body) ? body : (body as any)?.data ?? [];
+        const resultado: TrabajadorModel[] = Array.isArray(body) ? body : (body as any)?.data ?? [];
         this.trabajadorService.actualizarTrabajadores(resultado);
       }
   });

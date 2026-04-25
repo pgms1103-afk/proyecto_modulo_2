@@ -11,7 +11,8 @@ export class EnvioService {
   private cliente: HttpClient = inject(HttpClient);
   private readonly urlbase: string = 'http://localhost:8080/envio';
 
-
+  private estadoFiltro = new Subject<string>();
+  estadoFiltro$ = this.estadoFiltro.asObservable();
   private refrescarTabla = new Subject<void>();
   refrescarTabla$ = this.refrescarTabla.asObservable();
 
@@ -108,5 +109,9 @@ postCrearEnvio(
       this.urlbase + '/buscaratiempo?estado=' + entregaATiempo,
       { observe: 'response' }
     );
+  }
+
+  filtrarPorEstado(texto: string) {
+    this.estadoFiltro.next(texto);
   }
 }

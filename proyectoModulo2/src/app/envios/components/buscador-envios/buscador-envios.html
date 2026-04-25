@@ -2,7 +2,8 @@
 
   <div class="search-wrapper">
     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" class="search-input" placeholder="Buscar por tipo o dirección...">
+    <input type="text" class="search-input" placeholder="Buscar por tipo o dirección..." [(ngModel)]="textoBuscado"
+           (input)="buscar()">
   </div>
 
   <div class="filters-wrapper">
