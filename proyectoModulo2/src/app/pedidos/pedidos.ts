@@ -1,9 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef  } from '@angular/core';
 import { EnvioService } from '../services/envio.service';
 import { SesionService } from '../services/sesion.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UsuarioModel } from '../models/usuario.model';
+
 
 @Component({
   selector: 'app-pedidos',
@@ -16,6 +17,7 @@ export class Pedidos implements OnInit {
   private sesionService = inject(SesionService);
   private toastr = inject(ToastrService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   usuarioActual: UsuarioModel | null = null;
 
@@ -57,7 +59,10 @@ export class Pedidos implements OnInit {
     ).subscribe({
       next: (res) => {
         this.toastr.success(res || 'Envío creado correctamente', '¡Pedido Exitoso!');
-        this.limpiarFormulario();
+        setTimeout(() => {
+          this.limpiarFormulario();
+          this.cdr.detectChanges();
+        }, 0);
       },
       error: (e) => {
         this.toastr.error(e.error || 'Error al procesar el pedido', 'Error');

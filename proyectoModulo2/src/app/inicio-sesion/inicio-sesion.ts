@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef  } from '@angular/core';
 import { SesionService } from '../services/sesion.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,6 +12,7 @@ export class InicioSesion {
 
   private sesionService = inject(SesionService);
   private toastr = inject(ToastrService);
+  private cdr = inject(ChangeDetectorRef);
 
   modo: 'login' | 'signup' = 'login';
 
@@ -48,12 +49,19 @@ export class InicioSesion {
       this.regForm.tipo
     ).subscribe({
       next: (res) => {
-        this.toastr.success(res, 'Registro exitoso');
-        this.modo = 'login';
+        setTimeout(() => {
+          this.modo = 'login';
+          this.cdr.detectChanges();
+          this.toastr.success(res, 'Registro exitoso');
+        }, 0);
       },
       error: (e) => {
         this.toastr.error(e.error, 'Error en el registro');
       }
     });
+  }
+
+  cambiarModo(modo: 'login' | 'signup') {
+    setTimeout(() => this.modo = modo, 0);
   }
 }

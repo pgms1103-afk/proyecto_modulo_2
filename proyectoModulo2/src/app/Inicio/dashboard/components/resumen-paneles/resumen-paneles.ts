@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TrabajadorModel } from '../../../../models/trabajor.model';
 import { TrabajadorService } from '../../../../services/trabajador.service';
 import { Subscription } from 'rxjs';
@@ -24,6 +24,7 @@ export class ResumenPaneles implements OnInit, OnDestroy {
   envios: EnvioModel[] = [];
   enviosService = inject(EnvioService);
   private subEnvios: Subscription = new Subscription();
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit() {
     this.cargarDatosTrabajadores();
@@ -55,6 +56,7 @@ export class ResumenPaneles implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.trabajadores = [...body];
         }
+        this.cdr.detectChanges();
       },
       error: () => (this.trabajadores = []),
     });
@@ -105,10 +107,12 @@ export class ResumenPaneles implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.usuarios = [...body];
         }
+        this.cdr.detectChanges(); // ← agrega
       },
       error: () => (this.usuarios = []),
     });
   }
+
 
   get totalUsuarios(): number {
     return this.usuarios.length;
@@ -162,6 +166,7 @@ export class ResumenPaneles implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.envios = [...body];
         }
+        this.cdr.detectChanges(); // ← agrega
       },
       error: () => (this.envios = []),
     });

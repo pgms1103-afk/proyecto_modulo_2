@@ -1,4 +1,6 @@
-Falta login completo
+Login:
+Panel envios:
+-Poner exepciones para cuando no esta la fecha puesta, pq saltan mal
 
 
 PANEL INICIO: 
