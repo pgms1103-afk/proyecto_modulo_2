@@ -1,0 +1,55 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button class="tab-btn" [class.active]="modo === 'login'" (click)="cambiarModo('login')">Ingresar</button>
+      <button class="tab-btn" [class.active]="modo === 'signup'" (click)="cambiarModo('signup')">Registrarse</button>
+    </div>
+
+    <div class="auth-form">
+      <form *ngIf="modo === 'login'" (ngSubmit)="ejecutarLogin()">
+        <h2 class="auth-title">Bienvenido de nuevo</h2>
+        <div class="campo-grupo">
+          <label>Correo electrónico</label>
+          <input type="email" name="l_correo" [(ngModel)]="loginForm.correo" placeholder="ejemplo@correo.com" required>
+        </div>
+        <div class="campo-grupo">
+          <label>Contraseña</label>
+          <input type="password" name="l_pass" [(ngModel)]="loginForm.pass" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-accion">Iniciar Sesión</button>
+      </form>
+
+      <form *ngIf="modo === 'signup'" (ngSubmit)="ejecutarRegistro()">
+        <h2 class="auth-title">Crea tu cuenta</h2>
+
+        <div class="campo-grupo">
+          <label>Número de Cédula</label>
+          <input type="number" name="r_cedula" [(ngModel)]="regForm.cedula" placeholder="Ej: 10203040" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div class="campo-grupo">
+            <label>Nombre</label>
+            <input type="text" name="r_nombre" [(ngModel)]="regForm.nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="campo-grupo">
+            <label>Apellido</label>
+            <input type="text" name="r_apellido" [(ngModel)]="regForm.apellido" placeholder="Tu apellido" required>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label>Correo electrónico</label>
+          <input type="email" name="r_correo" [(ngModel)]="regForm.correo" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label>Contraseña</label>
+          <input type="password" name="r_pass" [(ngModel)]="regForm.pass" placeholder="Crea una contraseña" required>
+        </div>
+
+        <button type="submit" class="btn-accion">Crear Cuenta</button>
+      </form>
+    </div>
+  </div>
+</div>

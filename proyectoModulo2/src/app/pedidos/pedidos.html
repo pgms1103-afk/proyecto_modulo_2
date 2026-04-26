@@ -1,0 +1,89 @@
+<div class="pagina-cliente">
+  <header class="header-cliente">
+    <div class="marca">
+      <span class="icono-marca">📦</span>
+      <div>
+        <span class="nombre-marca">La paquetería de Paquetes</span>
+        <span class="subtitulo-marca">Portal de Clientes</span>
+      </div>
+    </div>
+    <div class="info-usuario">
+      <div class="perfil">
+        <span class="nombre-user">{{ usuarioActual?.nombre }}</span>
+        <span class="badge-tipo" [ngClass]="usuarioActual?.tipoUsuario?.toLowerCase() || ''">
+          {{ usuarioActual?.tipoUsuario }}
+        </span>
+      </div>
+      <button (click)="salir()" class="btn-logout">
+        <i class="fa-solid fa-right-from-bracket"></i> Salir
+      </button>
+    </div>
+  </header>
+
+  <main class="contenedor-pedido">
+    <div class="tarjeta-formulario">
+      <div class="cabecera-tarjeta">
+        <h2>Nuevo envío</h2>
+      </div>
+
+      <form (ngSubmit)="enviarPedido()" class="cuerpo-formulario">
+
+        <div class="campo">
+          <label>DESCRIPCIÓN</label>
+          <input type="text" name="desc" [(ngModel)]="pedidoForm.descripcion" placeholder="Descripción del paquete" required>
+        </div>
+
+        <div class="fila-campos">
+          <div class="campo">
+            <label>PESO (KG)</label>
+            <input type="number" name="peso" [(ngModel)]="pedidoForm.peso" step="0.1" min="0" required>
+          </div>
+          <div class="campo">
+            <label>DIRECCIÓN DESTINO</label>
+            <input type="text" name="destino" [(ngModel)]="pedidoForm.destino" placeholder="Ej: Calle 45 #12-30" required>
+          </div>
+        </div>
+
+        <div class="fila-campos">
+          <div class="campo">
+            <label>FECHA DE ENVÍO</label>
+            <input type="datetime-local" name="fEnvio" [(ngModel)]="pedidoForm.fechaEnvio" required>
+          </div>
+          <div class="campo">
+            <label>FECHA DE ENTREGA</label>
+            <input type="datetime-local" name="fEntrega" [(ngModel)]="pedidoForm.fechaEntrega" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label>TIPO DE PAQUETE</label>
+          <div class="selector-tipo">
+
+            <div class="opcion-tipo" [class.activo]="pedidoForm.tipoPaquete === 'Alimenticio'" (click)="seleccionarTipo('Alimenticio')">
+              <i class="fa-solid fa-apple-whole"></i>
+              <span>Alimenticio</span>
+              <small>x5.000/kg - mismo día</small>
+            </div>
+
+            <div class="opcion-tipo" [class.activo]="pedidoForm.tipoPaquete === 'No Alimenticio'" (click)="seleccionarTipo('No Alimenticio')">
+              <i class="fa-solid fa-box"></i>
+              <span>No Alimenticio</span>
+              <small>x3.000/kg - 24h</small>
+            </div>
+
+            <div class="opcion-tipo" [class.activo]="pedidoForm.tipoPaquete === 'Carta'" (click)="seleccionarTipo('Carta')">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Carta</span>
+              <small>$2.000 fijo - 72h</small>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="acciones-form">
+          <button type="submit" class="btn-verde">Guardar Envío</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>

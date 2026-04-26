@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { EnvioModel } from '../../../models/envio.model';
 import { EnvioService } from '../../../services/envio.service';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ export class EstadisticasEnvios implements OnInit, OnDestroy {
   envios: EnvioModel[] = [];
   envioService = inject(EnvioService);
   private sub: Subscription = new Subscription();
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit() {
     this.cargarDatos();
@@ -36,6 +37,7 @@ export class EstadisticasEnvios implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.envios = [...body];
         }
+        this.cdr.detectChanges(); // ← agrega
       },
       error: () => this.envios = []
     });

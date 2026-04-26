@@ -11,9 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { EnviosModule } from './envios/envios.module';
 import { DashboardModule } from './Inicio/dashboard/dashboard.module';
 import { ToastrModule } from 'ngx-toastr';
+import { InicioSesion } from './inicio-sesion/inicio-sesion';
+import { Pedidos } from './pedidos/pedidos';
 
 @NgModule({
-  declarations: [App, Navbar],
+  declarations: [App, Navbar, InicioSesion, Pedidos],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,10 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
     }),
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
-  ],
+  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })
 export class AppModule {}

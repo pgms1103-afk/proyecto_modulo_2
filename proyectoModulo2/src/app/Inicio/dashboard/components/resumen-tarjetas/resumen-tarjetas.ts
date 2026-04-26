@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core';
 import { TrabajadorModel } from '../../../../models/trabajor.model';
 import { TrabajadorService } from '../../../../services/trabajador.service';
 import { Subscription } from 'rxjs';
@@ -18,6 +18,7 @@ export class ResumenTarjetas implements OnInit, OnDestroy {
   trabajadores: TrabajadorModel[] = [];
   trabajadorService = inject(TrabajadorService);
   private subTrabajadores: Subscription = new Subscription();
+  private cdr = inject(ChangeDetectorRef);
 
   usuarios: UsuarioModel[] = [];
   usuarioService = inject(UsuarioService);
@@ -58,6 +59,7 @@ export class ResumenTarjetas implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.trabajadores = [...body];
         }
+        this.cdr.detectChanges();
       },
       error: () => this.trabajadores = []
     });
@@ -72,6 +74,7 @@ export class ResumenTarjetas implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.usuarios = [...body];
         }
+        this.cdr.detectChanges();
       },
       error: () => this.usuarios = []
     });
@@ -86,6 +89,7 @@ export class ResumenTarjetas implements OnInit, OnDestroy {
         } else if (Array.isArray(body)) {
           this.envios = [...body];
         }
+        this.cdr.detectChanges();
       },
       error: () => this.envios = []
     });
