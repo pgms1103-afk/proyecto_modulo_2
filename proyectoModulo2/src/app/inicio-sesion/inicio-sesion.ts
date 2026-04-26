@@ -33,7 +33,6 @@ export class InicioSesion {
         this.toastr.success('Bienvenido, ' + user.nombre, 'Éxito');
       },
       error: (e) => {
-        // Manejo de errores siguiendo tu patrón actual
         this.toastr.error(e.error || 'Credenciales inválidas', 'Error');
       }
     });

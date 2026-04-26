@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { App } from './app';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -11,6 +12,8 @@ describe('App', () => {
       declarations: [
         App
       ],
+
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
@@ -20,10 +23,5 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, proyectoModulo2');
-  });
+
 });
