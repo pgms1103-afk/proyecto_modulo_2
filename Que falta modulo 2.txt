@@ -1,20 +1,12 @@
-Login:
-Panel envios:
--Poner exepciones para cuando no esta la fecha puesta, pq saltan mal
+Falta login completo: LISTOO
 
+PANEL INICIO: Ya esta listo
 
-PANEL INICIO: 
+PANEL TRABAJADORES: LISTOOO
 
-Ya esta listo
+PANEL USUARIOS: LISTOOO
 
-PANEL TRABAJADORES:
-LISTOOO
-
-PANEL USUARIOS:
-LISTOOO
-
-PANEL PAQUETES:
-LISTOOO
+PANEL PAQUETES: LISTOOO
 
 
 BACK:
