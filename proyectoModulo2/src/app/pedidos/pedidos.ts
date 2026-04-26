@@ -65,7 +65,7 @@ export class Pedidos implements OnInit {
         }, 0);
       },
       error: (e) => {
-        this.toastr.error(e.error || 'Error al procesar el pedido', 'Error');
+        this.toastr.error( 'Error al procesar el pedido', 'Error');
       }
     });
   }
