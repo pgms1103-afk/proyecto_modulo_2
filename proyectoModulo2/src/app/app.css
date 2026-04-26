@@ -1,0 +1,11 @@
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d1117;
+}
+
+
+.con-margen-admin {
+  padding-top: 70px;
+}

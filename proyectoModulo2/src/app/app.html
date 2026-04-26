@@ -1,4 +1,5 @@
-<app-navbar></app-navbar>
-<main style="margin-top: 80px;">
+<app-navbar *ngIf="mostrarNavbarAdmin"></app-navbar>
+
+<main [class.con-margen-admin]="mostrarNavbarAdmin">
   <router-outlet></router-outlet>
 </main>
