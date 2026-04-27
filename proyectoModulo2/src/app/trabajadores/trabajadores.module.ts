@@ -9,6 +9,14 @@ import { TablaTrabajadores } from './components/tabla-trabajadores/tabla-trabaja
 import {FormsModule} from '@angular/forms';
 import {ActualizadorTrabajadores } from './components/actualizador-trabajadores/actualizador-trabajadores';
 
+/**
+ * @description
+ * Módulo encargado de agrupar y gestionar todos los componentes relacionados
+ * con la administración de trabajadores.
+ * * Este módulo centraliza las funcionalidades de visualización, búsqueda,
+ * estadísticas, creación y actualización de los perfiles del personal,
+ * facilitando su reutilización en otras partes de la aplicación.
+ */
 @NgModule({
   declarations: [
     Trabajadores,
